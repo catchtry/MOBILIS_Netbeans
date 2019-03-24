@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FichaDeAtendimento {
+public class FichaDeAtendimentoVM {
     
     private PessoaFisicaVM pessoaFisica;
     private PessoaJuridicaVM pessoaJuridica;
