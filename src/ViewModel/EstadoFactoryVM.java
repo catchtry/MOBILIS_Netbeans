@@ -6,6 +6,7 @@ import java.util.List;
 public class EstadoFactoryVM {
 
     public static List<EstadoVM> TodosOsEstados() {
+        
         List<EstadoVM> estados = new ArrayList<>();
         EstadoVM estadoDeSaoPaulo = GetEstadoDeSaoPaulo();
         EstadoVM estadoDoParana = GetEstadoDoParana();

@@ -2,7 +2,7 @@
 package ViewModel;
 
 
-public class PessoaJuridicaVM {
+public class PessoaJuridicaVM implements ClienteVM{
     
     private String cnpj;
     private InformacaoGeralVM informacoesGerais;
