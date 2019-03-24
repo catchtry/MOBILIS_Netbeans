@@ -10,14 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ViewModel.Veiculo;
+import ViewModel.VeiculoVM;
 
 /**
  *
  * @author Thiago
  */
 public class VeiculoDAO {
-    public void criar(Veiculo v){
+    public void criar(VeiculoVM v){
         Connection con = ConexaoBanco.getConnection();
         PreparedStatement stm = null;
         
