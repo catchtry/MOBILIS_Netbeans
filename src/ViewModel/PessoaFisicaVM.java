@@ -5,7 +5,7 @@ package ViewModel;
 public class PessoaFisicaVM {
     
     private String cpf;
-    private InformacoesGeraisVM informacoesGerais;
+    private InformacaoGeralVM informacoesGerais;
 
     public String getCpf() {
         return cpf;
@@ -15,11 +15,11 @@ public class PessoaFisicaVM {
         this.cpf = cpf;
     }
 
-    public InformacoesGeraisVM getInformacoesGerais() {
+    public InformacaoGeralVM getInformacoesGerais() {
         return informacoesGerais;
     }
 
-    public void setInformacoesGerais(InformacoesGeraisVM informacoesGerais) {
+    public void setInformacoesGerais(InformacaoGeralVM informacoesGerais) {
         this.informacoesGerais = informacoesGerais;
     }
     

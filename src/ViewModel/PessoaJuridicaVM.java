@@ -5,7 +5,7 @@ package ViewModel;
 public class PessoaJuridicaVM {
     
     private String cnpj;
-    private InformacoesGeraisVM informacoesGerais;
+    private InformacaoGeralVM informacoesGerais;
 
     public String getCnpj() {
         return cnpj;
@@ -15,11 +15,11 @@ public class PessoaJuridicaVM {
         this.cnpj = cnpj;
     }
 
-    public InformacoesGeraisVM getInformacoesGerais() {
+    public InformacaoGeralVM getInformacoesGerais() {
         return informacoesGerais;
     }
 
-    public void setInformacoesGerais(InformacoesGeraisVM informacoesGerais) {
+    public void setInformacoesGerais(InformacaoGeralVM informacoesGerais) {
         this.informacoesGerais = informacoesGerais;
     }
     

@@ -2,7 +2,7 @@
 package ViewModel;
 
 
-public class InformacoesGeraisVM {
+public class InformacaoGeralVM {
     
     private String nome;
     private EnderecoVM endereco;
