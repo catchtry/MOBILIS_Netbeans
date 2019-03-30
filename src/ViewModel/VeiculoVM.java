@@ -10,10 +10,13 @@ public class VeiculoVM {
     private String chassi;
     private int Quilometragem;
     private int lotacaoMaxima;
-    private int numeroDePortas;
+    
+    private enum NumeroDePortas{
+        SELECIONE, TRES, CINCO;
+    }
     
     private enum TipoDeVeiculo{
-        SELECIONE, MOTO, CARRO, CAMINHAO;
+        SELECIONE, MOTO(2), CARRO, CAMINHAO;
     }
     
     private enum Origem{

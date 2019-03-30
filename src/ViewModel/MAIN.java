@@ -12,7 +12,11 @@ package ViewModel;
 public class MAIN {
     
     public static void main(String[] args) {
-        ICliente cliente = new PessoaFisicaVM();
-        
+        IClienteVM cliente;
+        cliente.getInformacoesGerais().getContato();
+        if(true)
+            ((PessoaFisicaVM)cliente).getCpf();
+        else
+            ((PessoaJuridicaVM)cliente).getCnpj();
     }
 }

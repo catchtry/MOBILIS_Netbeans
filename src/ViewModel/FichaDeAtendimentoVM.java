@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FichaDeAtendimentoVM implements IClienteVM {
+public class FichaDeAtendimentoVM{
     
     private IClienteVM cliente;
-    private PessoaFisicaVM pessoaFisica;
-    private PessoaJuridicaVM pessoaJuridica;
     private List<VeiculoVM> veiculo = new ArrayList();
     private String vendedor;
     private String origemDoContato;
     private String dataDeAbertura;
     
+    public FichaDeAtendimentoVM(IClienteVM cliente){
+        this.cliente = cliente;
+    }
     private enum OrigemDeContato{
        SELECIONE, EMAIL, TELEFONE;
     }
