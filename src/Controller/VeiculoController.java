@@ -1,7 +1,12 @@
 
 package Controller;
 
+import DAL.VeiculoDAO;
+import ViewModel.VeiculoVM;
+import java.util.List;
+
 public class VeiculoController {
     
-    private List<Equipamento
+    private VeiculoDAO veiculoDAO;
+    private List<VeiculoVM> veiculos; 
 }
