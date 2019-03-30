@@ -83,6 +83,34 @@ public class PessoaFisicaDAO {
                 ConexaoBanco.closeConnection(con, stm, rs);
             }
             return pessoasf;
-        }
+            
+            public void atualizar(PessoaFisicaVM pf){
+                Connection con = ConexaoBanco.getConnection();
+                PreparedStatement stm = null; 
+                
+                try {
+                    stm = con.prepareStatement("UPDATE SET pessoafisica cpf = ?, nome = ?, logradouro = ?, cep = ?, numero = ?, bairro = ?, cidade = ?, uf = ?, complemento = ?, telefone = ?, email = ?, celular =?) WHERE codigoPf = ?");
+                    stm.setString(1,pf.getCpf());
+                    stm.setString(2,pf.getNome());
+                    stm.setString(3,pf.getLogradouro());
+                    stm.setString(4,pf.getCep());
+                    stm.setInt(5,pf.getNumero());
+                    stm.setString(6,pf.getBairro());
+                    stm.setString(7,pf.getCidade());
+                    stm.setString(8,pf.getUf());
+                    stm.setString(9,pf.getComplemento());
+                    stm.setString(10,pf.getTelefone());
+                    stm.setString(11,pf.getEmail());
+                    stm.setString(12,pf.getCelular());
+
+                    stm.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao atualizar: " +ex);
+                }finally{
+                    ConexaoBanco.closeConnection(con, stm);
+                }
+            }
            
+}
         
