@@ -25,8 +25,8 @@ public class ConexaoBanco {
     public Connection con;
     private static final String DRIVER = "org.postgresql.Driver";
     private static final String URL = "jdbc:postgresql:localhost:5432/mobilis";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "root";
     
     
     public static Connection getConnection(){
