@@ -14,12 +14,13 @@ import ViewModel.VeiculoVM;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
 /**
  *
  * @author Thiago
  */
 public class VeiculoDAO {
+    
     public void criar(VeiculoVM v){
         Connection con = ConexaoBanco.getConnection();
         PreparedStatement stm = null;
@@ -56,13 +57,13 @@ public class VeiculoDAO {
             ConexaoBanco.closeConnection(con, stm);
         }
         
-        public List<VeiculoVM> ler(){
-            
+   
+    public List<VeiculoVM> ler(){
             Connection con = ConexaoBanco.getConnection();
             PreparedStatement stm = null;
             ResultSet rs = null;
         
-        List<VeiculoVM> veiculos = new ArrayList<>();
+        List<VeiculoVM>veiculos = new ArrayList<>();
         try {
             stm = con.prepareStatement("SELECT * FROM veiculo");
             rs = stm.executeQuery();
@@ -108,33 +109,51 @@ public class VeiculoDAO {
         
         try {
             stm = con.prepareStatement("UPDATE veiculo SET chassi = ?,quilometragem = ?,lotacaoMaxima = ?,numeroDePortas = ?,tipoDeVeiculo = ?,origem = ?,uf = ?,renavam = ?,cilindrada = ?,marca = ?,anoDeFabricacao = ?,modelo = ?,anoDoModelo = ?,versao = ?,categoria = ?,cor = ?,combustivel = ?,cambio = ?,opcionais = ?,restricao = ?) WHERE placa = ?");
-            stm.setString(1,v.getPlaca());
-            stm.setString(2,v.getChassi());
-            stm.setInt(3,v.getQuilometragem());
-            stm.setInt(4,v.getLotacaoMaxima());
-            stm.setInt(5,v.getNumeroDePortas());
-            stm.setInt(6,v.getTipoDeVeiculo());
-            stm.setInt(7,v.getOrigem());
-            stm.setString(8,v.getUf());
-            stm.setString(9,v.getRenavam());
-            stm.setString(10,v.getCilindrada());
-            stm.setString(11,v.getMarca());
-            stm.setDate(12,v.getAnoDeFabricacao());
-            stm.setString(13,v.getModelo());
-            stm.setDate(14,v.getAnoDoModelo());
-            stm.setString(15,v.getVersao());
-            stm.setInt(16,v.getCategoria());
-            stm.setString(17,v.getCor());
-            stm.setInt(18,v.getCombustivel());
-            stm.setInt(19,v.getCambio());
-            stm.setString(20,v.getOpcionais());
-            stm.setInt(21,v.getRestricoes());
+            stm.setString(1, v.getPlaca());
+            stm.setString(2, v.getChassi());
+            stm.setInt(3, v.getQuilometragem());
+            stm.setInt(4, v.getLotacaoMaxima());
+            stm.setInt(5, v.getNumeroDePortas());
+            stm.setInt(6, v.getTipoDeVeiculo());
+            stm.setInt(7, v.getOrigem());
+            stm.setString(8, v.getUf());
+            stm.setString(9, v.getRenavam());
+            stm.setString(10, v.getCilindrada());
+            stm.setString(11, v.getMarca());
+            stm.setDate(12, v.getAnoDeFabricacao());
+            stm.setString(13, v.getModelo());
+            stm.setDate(14, v.getAnoDoModelo());
+            stm.setString(15, v.getVersao());
+            stm.setInt(16, v.getCategoria());
+            stm.setString(17, v.getCor());
+            stm.setInt(18, v.getCombustivel());
+            stm.setInt(19, v.getCambio());
+            stm.setString(20, v.getOpcionais());
+            stm.setInt(21, v.getRestricoes());
             
             stm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar: " +ex);
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " +ex);
         }finally{
             ConexaoBanco.closeConnection(con, stm);
+        }
+   
+    public void remover(VeiculoVM v){    
+        Connection con = ConexaoBanco.getConnection();
+        PreparedStatement stm = null;
+        
+            try {
+                stm = con.prepareStatement("DELETE FROM veiculo WHERE placa = ?");
+                stm.setString(1, v.getPlaca());
+
+                stm.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir: " +ex);
+            }finally{
+                ConexaoBanco.closeConnection(con, stm);
+            }
+        
         }
 }
