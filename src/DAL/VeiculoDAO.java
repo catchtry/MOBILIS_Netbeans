@@ -22,8 +22,8 @@ public class VeiculoDAO {
         PreparedStatement stm = null;
         
         try {
-            stm = con.prepareStatement("INSERT INTO veiculo (placa, modelo, marca, cor) values (?,?,?)");
-            //stm.setString();preciso das classes montadas para prosseguir
+            stm = con.prepareStatement("INSERT INTO veiculo (placa, modelo, marca, cor) values (?,?,?,?)");
+            //stm.setString(1, placa);
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
