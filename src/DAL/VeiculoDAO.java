@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ViewModel.VeiculoVM;
-
 import java.sql.ResultSet;
-import java.util.List;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Thiago
@@ -72,7 +72,6 @@ public class VeiculoDAO {
         
                 VeiculoVM veiculo = new VeiculoVM();
             
-                VeiculoVM veiculo = new VeiculoVM();
                 veiculo.setPlaca(rs.getPlaca("placa"));
                 veiculo.setChasse(rs.getChassi("chassi"));
                 veiculo.setQuilomeragem(rs.getQuilometragem("quilometragem"));
@@ -139,7 +138,8 @@ public class VeiculoDAO {
         }finally{
             ConexaoBanco.closeConnection(con, stm);
         }
-   
+    }
+    
     public void remover(VeiculoVM v){    
         Connection con = ConexaoBanco.getConnection();
         PreparedStatement stm = null;
@@ -156,5 +156,5 @@ public class VeiculoDAO {
                 ConexaoBanco.closeConnection(con, stm);
             }
         
-        }
+    }
 }
