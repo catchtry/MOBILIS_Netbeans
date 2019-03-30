@@ -61,11 +61,15 @@ public class VeiculoDAO {
             Connection con = ConexaoBanco.getConnection();
             PreparedStatement stm = null;
             ResultSet rs = null;
-            
+        
+        List<VeiculoVM> veiculos = new ArrayList<>();
         try {
             stm = con.prepareStatement("SELECT * FROM veiculo");
             rs = stm.executeQuery();
             while(rs.next()){
+        
+                VeiculoVM veiculo = new VeiculoVM();
+            
                 VeiculoVM veiculo = new VeiculoVM();
                 veiculo.setPlaca(rs.getPlaca("placa"));
                 veiculo.setChasse(rs.getChassi("chassi"));
@@ -82,13 +86,21 @@ public class VeiculoDAO {
                 veiculo.setModelo(rs.getModelo("modelo"));
                 veiculo.setAnoDoModelo(rs.getAnoDoModelo("anoDoModelo"));
                 veiculo.setVersao(rs.getVersao("versao"));
-                veiculo.setCategoria(rs.getModelo("modelo"));
-                veiculo.setAnoDoModelo(rs.getAnoDoModelo("anoDoModelo"));
-                veiculo.setVersao(rs.getVersao("versao"));
+                veiculo.setCategoria(rs.getCategoria("categoria"));
+                veiculo.setCor(rs.getCor("cor"));
+                veiculo.setCombustiveil(rs.getCombustivel("combustivel"));
+                veiculo.setCambio(rs.getCambio("cambio"));
+                veiculo.setOpcionais(rs.getOpcionais("opcionais"));
+                veiculo.setRestricoes(rs.getRestricoes("restricao"));
+                veiculos.add(veiculo);
             }
         } catch (SQLException ex) {
             Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConexaoBanco.closeConnection(con, stm, rs);
         }
+        
+        return veiculos;
             
     }
             
