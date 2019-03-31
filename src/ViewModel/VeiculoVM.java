@@ -23,38 +23,10 @@ public class VeiculoVM {
     private int Categoria;
     private String cor;
     private int combustivel;
-    
-    private enum Cambio{
-       SELECIONE, MANUAL, AUTOMATICO;
-    }
-    
+    private int Cambio;
     public String opcionais;
-    
-    private enum Restricoes{
-       SELECIONE, SEM_RESTRICOES, ALIENACAO_FIDUCIARIA,
-       ARRENDAMENTO_MERCANTIL, RESERVA_DOMINIO,
-       PENHOR_VEICULOS, OUTRAS_RESTRICOES;
-    }
-    
-    private enum CondicaoVeiculo{
-       SELECIONE, NOVO, USADO;
-    }
-
-    public Date getAnoDeFabricacao() {
-        return anoDeFabricacao;
-    }
-
-    public Date getAnoDoModelo() {
-        return anoDoModelo;
-    }
-
-    public String getChassi() {
-        return chassi;
-    }
-
-    public String getCilindradas() {
-        return cilindradas;
-    }
+    private int restricoes;
+    private int CondicaoVeiculo;
 
     public String getPlaca() {
         return placa;
@@ -62,6 +34,14 @@ public class VeiculoVM {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
 
     public int getQuilometragem() {
@@ -80,6 +60,22 @@ public class VeiculoVM {
         this.lotacaoMaxima = lotacaoMaxima;
     }
 
+    public int getNumeroDePortas() {
+        return numeroDePortas;
+    }
+
+    public void setNumeroDePortas(int numeroDePortas) {
+        this.numeroDePortas = numeroDePortas;
+    }
+
+    public int getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(int origem) {
+        this.origem = origem;
+    }
+
     public String getUf() {
         return uf;
     }
@@ -96,12 +92,28 @@ public class VeiculoVM {
         this.renavan = renavan;
     }
 
+    public String getCilindradas() {
+        return cilindradas;
+    }
+
+    public void setCilindradas(String cilindradas) {
+        this.cilindradas = cilindradas;
+    }
+
     public String getMarca() {
         return marca;
     }
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public Date getAnoDeFabricacao() {
+        return anoDeFabricacao;
+    }
+
+    public void setAnoDeFabricacao(Date anoDeFabricacao) {
+        this.anoDeFabricacao = anoDeFabricacao;
     }
 
     public String getModelo() {
@@ -112,12 +124,28 @@ public class VeiculoVM {
         this.modelo = modelo;
     }
 
+    public Date getAnoDoModelo() {
+        return anoDoModelo;
+    }
+
+    public void setAnoDoModelo(Date anoDoModelo) {
+        this.anoDoModelo = anoDoModelo;
+    }
+
     public String getVersao() {
         return versao;
     }
 
     public void setVersao(String versao) {
         this.versao = versao;
+    }
+
+    public int getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(int Categoria) {
+        this.Categoria = Categoria;
     }
 
     public String getCor() {
@@ -128,6 +156,22 @@ public class VeiculoVM {
         this.cor = cor;
     }
 
+    public int getCombustivel() {
+        return combustivel;
+    }
+
+    public void setCombustivel(int combustivel) {
+        this.combustivel = combustivel;
+    }
+
+    public int getCambio() {
+        return Cambio;
+    }
+
+    public void setCambio(int Cambio) {
+        this.Cambio = Cambio;
+    }
+
     public String getOpcionais() {
         return opcionais;
     }
@@ -136,22 +180,22 @@ public class VeiculoVM {
         this.opcionais = opcionais;
     }
 
-    public void setAnoDeFabricacao(Date anoDeFabricacao) {
-        this.anoDeFabricacao = anoDeFabricacao;
+    public int getRestricoes() {
+        return restricoes;
     }
 
-    public void setAnoDoModelo(Date anoDoModelo) {
-        this.anoDoModelo = anoDoModelo;
+    public void setRestricoes(int restricoes) {
+        this.restricoes = restricoes;
     }
 
-    public void setChassi(String chassi) {
-        this.chassi = chassi;
+    public int getCondicaoVeiculo() {
+        return CondicaoVeiculo;
     }
 
-    public void setCilindradas(String cilindradas) {
-        this.cilindradas = cilindradas;
+    public void setCondicaoVeiculo(int CondicaoVeiculo) {
+        this.CondicaoVeiculo = CondicaoVeiculo;
     }
-    
+      
     
     
 }
