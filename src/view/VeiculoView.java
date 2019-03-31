@@ -5,7 +5,7 @@
  */
 package view;
 
-import ViewModel.Enums.NumeroDePortas;
+import ViewModel.VeiculoVM.Enums.NumeroDePortas;
 import ViewModel.VeiculoVM;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;

@@ -1,13 +1,15 @@
-package ViewModel.Enums;
 
-public enum CondicaoDoVeiculo {
+package ViewModel.VeiculoVM_Enums;
 
-    SELECIONE(0, "Selecione"), NOVO(1, "Novo"), USADO(2, "Usado");
+
+public enum NumeroDePortas {
+    
+    SELECIONE(0, "Selecione"), TRES(1, "3"), CINCO(2, "5");
 
     private int valorDoEnum;
     private String descricao;
 
-    private CondicaoDoVeiculo(int tipo, String descricao) {
+    private NumeroDePortas(int tipo, String descricao) {
 
         this.valorDoEnum = tipo;
         this.descricao = descricao;

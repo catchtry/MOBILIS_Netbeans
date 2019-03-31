@@ -1,15 +1,13 @@
-package ViewModel.Enums;
+package ViewModel.VeiculoVM_Enums;
 
-public enum Combustivel {
+public enum CondicaoDoVeiculo {
 
-    SELECIONE(0, "Selecione"), ALCOOL(1, "Álcool"), DIESEL(2, "Diesel"),
-    FLEX(3, "Flex"), GASOLINA(4, "Gasolina"), GNV(5, "GNV"),
-    HIBRIDO_ELETRICO(6, "Híbrido/Elétrico"), MULTIFLEX_ALC_GAS_GNV(7, "MultiFlex (Alc, Gás, GNV)");
+    SELECIONE(0, "Selecione"), NOVO(1, "Novo"), USADO(2, "Usado");
 
     private int valorDoEnum;
     private String descricao;
 
-    private Combustivel(int tipo, String descricao) {
+    private CondicaoDoVeiculo(int tipo, String descricao) {
 
         this.valorDoEnum = tipo;
         this.descricao = descricao;

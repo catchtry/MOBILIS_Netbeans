@@ -1,4 +1,4 @@
-package ViewModel.Enums;
+package ViewModel.VeiculoVM_Enums;
 
 public enum Restricoes {
 
