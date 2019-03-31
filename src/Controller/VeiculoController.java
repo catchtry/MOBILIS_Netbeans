@@ -8,5 +8,7 @@ import java.util.List;
 public class VeiculoController {
     
     private VeiculoDAO veiculoDAO;
-    private List<VeiculoVM> veiculos; 
+    private List<VeiculoVM> veiculos;
+    
+    
 }

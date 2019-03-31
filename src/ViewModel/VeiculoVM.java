@@ -10,19 +10,8 @@ public class VeiculoVM {
     private String chassi;
     private int Quilometragem;
     private int lotacaoMaxima;
-
-    private enum NumeroDePortas{
-        SELECIONE, TRES, CINCO;
-    }
-    
-    private enum TipoDeVeiculo{
-        SELECIONE, MOTO, CARRO, CAMINHAO;
-    }
-    
-    private enum Origem{
-        SELECIONE, NACIONAL, IMPORTADO;
-    }
-    
+    private int numeroDePortas;
+    private int origem;
     private String uf;
     private String renavan;
     private String cilindradas;
@@ -31,20 +20,9 @@ public class VeiculoVM {
     private String modelo;
     private Date anoDoModelo;
     private String versao;
-    
-    private enum Categoria{
-        SELECIONE, CONVERSIVEL_CUPE, HATCH, LEVE, 
-        MONOVOLUME, PICAPES, SEDA, 
-        UTILITARIO_ESPORTIVO, VAN, WAGNON_PERUA;
-    }
-    
+    private int Categoria;
     private String cor;
-    
-    private enum Combustivel{
-       SELECIONE, ALCOOL, DIESEL, FLEX, 
-       GASOLINA, GNV, HIBRIDO_ELETRICO, 
-       MULTIFLEX_ALC_GAS_GNV;
-    }
+    private int combustivel;
     
     private enum Cambio{
        SELECIONE, MANUAL, AUTOMATICO;
