@@ -248,7 +248,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         recuperaInformacoesDaTelaEPreencheObjetoCliente();
         limparCampos();
-        //cadastroClienteController.SalvarCliente();
+        cadastroClienteController.SalvarCliente();
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
