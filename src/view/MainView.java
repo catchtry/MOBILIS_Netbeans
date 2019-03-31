@@ -116,7 +116,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       ClienteView cliente = new ClienteView(); // Cria novo objeto do tipo JFrame
+       CadastroClienteView2 cliente = new CadastroClienteView2(); // Cria novo objeto do tipo JFrame
        cliente.setVisible(true);  // Torna o JFrame visivel
        this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_jButton1ActionPerformed
