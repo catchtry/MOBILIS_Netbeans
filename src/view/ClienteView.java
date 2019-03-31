@@ -27,80 +27,136 @@ public class ClienteView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        ClienteBarraMenu = new javax.swing.JPanel();
+        btnApagar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnFiltrar = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
+        lblCliente = new javax.swing.JLabel();
+        ClienteMenu = new javax.swing.JPanel();
+        btnCliente = new javax.swing.JButton();
+        btnVeiculo = new javax.swing.JButton();
+        btnCompra = new javax.swing.JButton();
+        btnVenda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cliente");
         setPreferredSize(new java.awt.Dimension(1024, 628));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton1.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton1.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
+        btnApagar.setBorderPainted(false);
+        btnApagar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnApagar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnApagar.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton2.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton2.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
+        btnEditar.setBorderPainted(false);
+        btnEditar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnEditar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnEditar.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton3.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton3.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filter.png"))); // NOI18N
+        btnFiltrar.setBorderPainted(false);
+        btnFiltrar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnFiltrar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnFiltrar.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton4.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton4.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
+        btnPesquisar.setBorderPainted(false);
+        btnPesquisar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
-        jButton5.setBorderPainted(false);
-        jButton5.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton5.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton5.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        btnCadastrar.setBorderPainted(false);
+        btnCadastrar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnCadastrar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnCadastrar.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel1.setText("Cliente");
+        lblCliente.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        lblCliente.setText("Cliente");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout ClienteBarraMenuLayout = new javax.swing.GroupLayout(ClienteBarraMenu);
+        ClienteBarraMenu.setLayout(ClienteBarraMenuLayout);
+        ClienteBarraMenuLayout.setHorizontalGroup(
+            ClienteBarraMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienteBarraMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        ClienteBarraMenuLayout.setVerticalGroup(
+            ClienteBarraMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteBarraMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(ClienteBarraMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnApagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        btnCliente.setText("Cadastrar");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+
+        btnVeiculo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnVeiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
+        btnVeiculo.setText("Pesquisar");
+
+        btnCompra.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
+        btnCompra.setText("Apagar");
+
+        btnVenda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
+        btnVenda.setText("Editar");
+
+        javax.swing.GroupLayout ClienteMenuLayout = new javax.swing.GroupLayout(ClienteMenu);
+        ClienteMenu.setLayout(ClienteMenuLayout);
+        ClienteMenuLayout.setHorizontalGroup(
+            ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87)
+                .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ClienteMenuLayout.setVerticalGroup(
+            ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97)
+                .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -108,17 +164,31 @@ public class ClienteView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ClienteBarraMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(ClienteMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 566, Short.MAX_VALUE))
+                .addComponent(ClienteBarraMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(ClienteMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 230, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        // TODO add your handling code here:
+        CadastroView cliente = new CadastroView(); // Cria novo objeto do tipo JFrame
+        cliente.setVisible(true);  // Torna o JFrame visivel
+        this.dispose();  // Fecha o JFrame anterior
+    }//GEN-LAST:event_btnClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,12 +241,17 @@ public class ClienteView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel ClienteBarraMenu;
+    private javax.swing.JPanel ClienteMenu;
+    private javax.swing.JButton btnApagar;
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnCompra;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnVeiculo;
+    private javax.swing.JButton btnVenda;
+    private javax.swing.JLabel lblCliente;
     // End of variables declaration//GEN-END:variables
 }
