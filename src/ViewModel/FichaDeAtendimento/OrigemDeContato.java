@@ -1,13 +1,13 @@
-package ViewModel.FichaDeAtendimentoVM_Enums;
+package ViewModel.FichaDeAtendimento;
 
-public enum ComoSoube {
+public enum OrigemDeContato {
 
-    SELECIONE(0, "Selecione"), FACEBOOK(1, "Facebook"), PANFLETO(2, "Panfleto"), OUTDOOR(3, "Outdoor");
+    SELECIONE(0, "Selecione"), EMAIL(1, "E-mail"), TELEFONE(2, "Telefone");
 
     private int valorDoEnum;
     private String descricao;
 
-    private ComoSoube(int tipo, String descricao) {
+    private OrigemDeContato(int tipo, String descricao) {
 
         this.valorDoEnum = tipo;
         this.descricao = descricao;

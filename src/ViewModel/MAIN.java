@@ -5,6 +5,10 @@
  */
 package ViewModel;
 
+import ViewModel.Cliente.IClienteVM;
+import ViewModel.Cliente.PessoaJuridicaVM;
+import ViewModel.Cliente.PessoaFisicaVM;
+
 /**
  *
  * @author lais.lopes

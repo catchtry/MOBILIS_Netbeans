@@ -1,6 +1,8 @@
 
-package ViewModel;
+package ViewModel.FichaDeAtendimento;
 
+import ViewModel.Cliente.IClienteVM;
+import ViewModel.Veiculo.VeiculoVM;
 import java.util.ArrayList;
 import java.util.List;
 

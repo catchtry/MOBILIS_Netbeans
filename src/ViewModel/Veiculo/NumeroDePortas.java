@@ -1,13 +1,15 @@
-package ViewModel.FichaDeAtendimentoVM_Enums;
 
-public enum OrigemDeContato {
+package ViewModel.Veiculo;
 
-    SELECIONE(0, "Selecione"), EMAIL(1, "E-mail"), TELEFONE(2, "Telefone");
+
+public enum NumeroDePortas {
+    
+    SELECIONE(0, "Selecione"), TRES(1, "3"), CINCO(2, "5");
 
     private int valorDoEnum;
     private String descricao;
 
-    private OrigemDeContato(int tipo, String descricao) {
+    private NumeroDePortas(int tipo, String descricao) {
 
         this.valorDoEnum = tipo;
         this.descricao = descricao;

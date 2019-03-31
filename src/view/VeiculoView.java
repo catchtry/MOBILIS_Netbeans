@@ -5,8 +5,8 @@
  */
 package view;
 
-import ViewModel.VeiculoVM.Enums.NumeroDePortas;
-import ViewModel.VeiculoVM;
+import ViewModel.Veiculo.VeiculoVM.Enums.NumeroDePortas;
+import ViewModel.Veiculo.VeiculoVM;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;

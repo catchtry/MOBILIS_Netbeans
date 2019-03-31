@@ -1,5 +1,10 @@
 
-package ViewModel;
+package ViewModel.Compra;
+
+import ViewModel.Cliente.PessoaJuridicaVM;
+import ViewModel.Cliente.PessoaFisicaVM;
+import ViewModel.FichaDeAtendimento.FichaDeAtendimentoVM;
+import ViewModel.Veiculo.VeiculoVM;
 
 
 public class RegistroDeCompraVM {

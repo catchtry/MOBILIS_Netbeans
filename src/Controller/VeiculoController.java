@@ -2,7 +2,7 @@
 package Controller;
 
 import DAL.VeiculoDAO;
-import ViewModel.VeiculoVM;
+import ViewModel.Veiculo.VeiculoVM;
 import java.util.List;
 
 public class VeiculoController {

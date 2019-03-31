@@ -1,6 +1,8 @@
 
-package ViewModel;
+package ViewModel.Compra;
 
+import ViewModel.FichaDeAtendimento.FichaDeAtendimentoVM;
+import ViewModel.Veiculo.VeiculoVM;
 import java.sql.Date;
 
 

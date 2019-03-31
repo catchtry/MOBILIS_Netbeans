@@ -1,5 +1,5 @@
 
-package ViewModel;
+package ViewModel.Cliente;
 
 
 public class CidadeVM {

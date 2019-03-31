@@ -1,5 +1,5 @@
 
-package ViewModel;
+package ViewModel.Veiculo;
 
 import java.sql.Date;
 

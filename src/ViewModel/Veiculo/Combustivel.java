@@ -1,4 +1,4 @@
-package ViewModel.VeiculoVM_Enums;
+package ViewModel.Veiculo;
 
 public enum Combustivel {
 
