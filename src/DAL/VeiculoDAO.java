@@ -10,7 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ViewModel.VeiculoVM;
+import ViewModel.Veiculo.VeiculoVM;
+
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;

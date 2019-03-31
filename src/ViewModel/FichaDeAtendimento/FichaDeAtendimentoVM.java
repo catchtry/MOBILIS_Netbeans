@@ -1,6 +1,8 @@
 
-package ViewModel;
+package ViewModel.FichaDeAtendimento;
 
+import ViewModel.Cliente.IClienteVM;
+import ViewModel.Veiculo.VeiculoVM;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,18 +14,13 @@ public class FichaDeAtendimentoVM{
     private String vendedor;
     private String origemDoContato;
     private String dataDeAbertura;
+    private int origemDeContato;
+    private int comoSoube;
     
     public FichaDeAtendimentoVM(IClienteVM cliente){
         this.cliente = cliente;
     }
-    private enum OrigemDeContato{
-       SELECIONE, EMAIL, TELEFONE;
-    }
     
-    private enum ComoSoube{
-       SELECIONE, FACEBOOK, PANFLETO, OUTDOOR;
-    }
-
     public String getDataDeAbertura() {
         return dataDeAbertura;
     }
@@ -54,6 +51,22 @@ public class FichaDeAtendimentoVM{
 
     public void setVendedor(String vendedor) {
         this.vendedor = vendedor;
+    }
+
+    public int getComoSoube() {
+        return comoSoube;
+    }
+
+    public void setComoSoube(int comoSoube) {
+        this.comoSoube = comoSoube;
+    }
+
+    public void setOrigemDeContato(int origemDeContato) {
+        this.origemDeContato = origemDeContato;
+    }
+
+    public int getOrigemDeContato() {
+        return origemDeContato;
     }
     
     
