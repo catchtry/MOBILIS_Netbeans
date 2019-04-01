@@ -5,7 +5,7 @@ package ViewModel.Cliente;
 public class PessoaJuridicaVM implements IClienteVM{
     
     private String cnpj;
-    private InformacaoGeralVM informacoesGerais;
+    private InformacaoGeralVM informacoesGerais = new InformacaoGeralVM();
 
     public String getCnpj() {
         return cnpj;

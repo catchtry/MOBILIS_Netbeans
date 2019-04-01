@@ -12,14 +12,16 @@ import ViewModel.Cliente.TipoDePessoa;
 import java.util.List;
 
 
-public class CadastroClienteController {
+public class ClienteController {
     
     private List<EstadoVM> estados;
     private PessoaFisicaDAO pessoaFisicaDAO;
     private PessoaJuridicaDAO pessoaJuridicaDAO;
     
-    public CadastroClienteController(){
+    public ClienteController(){
         estados = EstadoFactoryVM.TodosOsEstados();
+        pessoaFisicaDAO = new PessoaFisicaDAO();
+        pessoaJuridicaDAO = new PessoaJuridicaDAO();
     }
     
     public List<EstadoVM> GetEstados()
@@ -30,16 +32,31 @@ public class CadastroClienteController {
         return estados.get(id);
     }
     
-    public void SalvarCliente(TipoDePessoa tipoDePessoa, IClienteVM cliente){
+    public void salvarCliente(TipoDePessoa tipoDePessoa, IClienteVM cliente){
         
         if(tipoDePessoa == TipoDePessoa.PESSOA_FISICA){
-            pessoaFisicaDAO = new PessoaFisicaDAO();
+            
             pessoaFisicaDAO.criar((PessoaFisicaVM)cliente);
             
         }else{
-            pessoaJuridicaDAO = new PessoaJuridicaDAO();
+            
             pessoaJuridicaDAO.criar((PessoaJuridicaVM)cliente);
         }
+    }
+    
+    public IClienteVM lerCliente(TipoDePessoa tipoDePessoa, String cpf){
+        
+        if(tipoDePessoa == TipoDePessoa.PESSOA_FISICA){
+            
+            PessoaFisicaVM pessoaFisica = pessoaFisicaDAO.lerPessoaFisicaByCPF(cpf);
+            return pessoaFisica;
+        }else{
+           
+            //PessoaJuridicaVM pessoaJuridica = pessoaJuridicaDAO.lerPessoaJuridicaByCNPJ();
+            //return pessoaJuridica;
+        }
+        
+        return null;
     }
            
 }
