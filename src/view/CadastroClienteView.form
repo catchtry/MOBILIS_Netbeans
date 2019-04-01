@@ -230,11 +230,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pessoa F&#xed;sica"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rbnPessoaFisicaItemStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbnPessoaJuridica">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pessoa Jur&#xed;dica"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rbnPessoaJuridicaItemStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCpfCnpj">
           <Properties>
@@ -248,6 +254,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbxUfItemStateChanged"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxUfActionPerformed"/>
           </Events>
         </Component>
@@ -334,6 +341,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtCPF_CNPJ">
         </Component>

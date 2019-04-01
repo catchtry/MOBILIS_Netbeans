@@ -7,6 +7,7 @@ import ViewModel.Cliente.EstadoVM;
 import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.PessoaFisicaVM;
 import ViewModel.Cliente.PessoaJuridicaVM;
+import java.awt.event.ItemEvent;
 import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,11 +19,12 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
     private CadastroClienteController cadastroClienteController;
     private IClienteVM cliente;
+    
     public CadastroClienteView() {
         initComponents();
         cadastroClienteController = new CadastroClienteController();
         limparCampos();
-        loadComboBoxUf();
+        loadComboBoxUf();  
     }
 
      private void verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ(){
@@ -87,7 +89,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         
         List<EstadoVM> estados;
         estados = cadastroClienteController.GetEstados();
-        limpaComboBoxEAdicionaOpcaoSelecione();
+        cbxUf.addItem("Selecione");
         
         for(EstadoVM estado : estados) {
         cbxUf.addItem(estado.getUf());
@@ -112,9 +114,6 @@ private void loadComboBoxCidade(){
 }
     
 private void limpaComboBoxEAdicionaOpcaoSelecione(){
-    
-    cbxUf.removeAllItems();
-    cbxUf.addItem("Selecione");
     cbxCidade.removeAllItems();
     cbxCidade.addItem("Selecione");
 }
@@ -169,11 +168,26 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         setTitle("Cadastro");
 
         rbnPessoaFisica.setText("Pessoa Física");
+        rbnPessoaFisica.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rbnPessoaFisicaItemStateChanged(evt);
+            }
+        });
 
         rbnPessoaJuridica.setText("Pessoa Jurídica");
+        rbnPessoaJuridica.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rbnPessoaJuridicaItemStateChanged(evt);
+            }
+        });
 
         lblCpfCnpj.setText("CPF / CNPJ : ");
 
+        cbxUf.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxUfItemStateChanged(evt);
+            }
+        });
         cbxUf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxUfActionPerformed(evt);
@@ -209,6 +223,11 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         jLabel3.setText("E-mail :");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("(##) ####-####"))));
 
@@ -439,6 +458,28 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBairroActionPerformed
+
+    private void rbnPessoaFisicaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbnPessoaFisicaItemStateChanged
+        rbnPessoaJuridica.setSelected(false);
+    }//GEN-LAST:event_rbnPessoaFisicaItemStateChanged
+
+    private void rbnPessoaJuridicaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbnPessoaJuridicaItemStateChanged
+        rbnPessoaFisica.setSelected(false);
+    }//GEN-LAST:event_rbnPessoaJuridicaItemStateChanged
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        recuperaInformacoesDaTelaEPreencheObjetoCliente();
+        limparCampos();
+        cadastroClienteController.SalvarCliente();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
+        int state = evt.getStateChange();
+        if(state == ItemEvent.SELECTED){
+  
+           loadComboBoxCidade();
+        }
+    }//GEN-LAST:event_cbxUfItemStateChanged
 
     private void setMascaraCNPJ(){
         
