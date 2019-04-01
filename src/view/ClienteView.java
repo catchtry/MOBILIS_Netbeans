@@ -45,12 +45,18 @@ public class ClienteView extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         btnMenu = new javax.swing.JMenu();
         btnUsuario = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         btnConfiguracoes = new javax.swing.JMenu();
         btnAjuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cliente");
         setPreferredSize(new java.awt.Dimension(1024, 628));
+
+        ClienteBarraMenu.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
         jButton1.setBorderPainted(false);
@@ -170,12 +176,31 @@ public class ClienteView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenuBar1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jMenuBar1ComponentAdded(evt);
+            }
+        });
+
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
         btnMenu.setText("Menu");
         jMenuBar1.add(btnMenu);
 
         btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man-user.png"))); // NOI18N
         btnUsuario.setText("Usuário");
+
+        jMenuItem1.setText("Cadastrar");
+        btnUsuario.add(jMenuItem1);
+
+        jMenuItem2.setText("Alterar");
+        btnUsuario.add(jMenuItem2);
+
+        jMenuItem3.setText("Excluir");
+        btnUsuario.add(jMenuItem3);
+
+        jMenuItem4.setText("Pesquisar");
+        btnUsuario.add(jMenuItem4);
+
         jMenuBar1.add(btnUsuario);
 
         btnConfiguracoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings-gears.png"))); // NOI18N
@@ -217,6 +242,10 @@ public class ClienteView extends javax.swing.JFrame {
         cliente.setVisible(true);  // Torna o JFrame visivel
         this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuBar1ComponentAdded
 
     /**
      * @param args the command line arguments
@@ -285,6 +314,10 @@ public class ClienteView extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JLabel lblCliente;
     // End of variables declaration//GEN-END:variables
 }

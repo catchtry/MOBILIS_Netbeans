@@ -54,6 +54,12 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+
         lblUsuario.setText("Usuário:");
 
         lblSenha.setText("Senha:");
@@ -135,6 +141,10 @@ public class LoginView extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_btnLogarActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here                
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments

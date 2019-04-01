@@ -39,10 +39,16 @@ public class MainView extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        btnMenu = new javax.swing.JMenu();
+        btnUsuario = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        btnConfiguracoes = new javax.swing.JMenu();
+        btnAjuda = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(640, 480));
@@ -132,21 +138,41 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
-        jMenu2.setText("Menu");
-        jMenuBar1.add(jMenu2);
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
+        btnMenu.setText("Menu");
+        jMenuBar1.add(btnMenu);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man-user.png"))); // NOI18N
-        jMenu3.setText("Usuário");
-        jMenuBar1.add(jMenu3);
+        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man-user.png"))); // NOI18N
+        btnUsuario.setText("Usuário");
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings-gears.png"))); // NOI18N
-        jMenu1.setText("Configurações");
-        jMenuBar1.add(jMenu1);
+        jMenuItem1.setText("Cadastrar");
+        btnUsuario.add(jMenuItem1);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/information.png"))); // NOI18N
-        jMenu4.setText("Ajuda");
-        jMenuBar1.add(jMenu4);
+        jMenuItem2.setText("Alterar");
+        btnUsuario.add(jMenuItem2);
+
+        jMenuItem3.setText("Excluir");
+        btnUsuario.add(jMenuItem3);
+
+        jMenuItem4.setText("Pesquisar");
+        btnUsuario.add(jMenuItem4);
+
+        jMenuBar1.add(btnUsuario);
+
+        btnConfiguracoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings-gears.png"))); // NOI18N
+        btnConfiguracoes.setText("Configurações");
+        jMenuBar1.add(btnConfiguracoes);
+
+        btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/information.png"))); // NOI18N
+        btnAjuda.setText("Ajuda");
+
+        jMenuItem5.setText("Ajuda");
+        btnAjuda.add(jMenuItem5);
+
+        jMenuItem6.setText("Sobre");
+        btnAjuda.add(jMenuItem6);
+
+        jMenuBar1.add(btnAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -226,16 +252,22 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu btnAjuda;
+    private javax.swing.JMenu btnConfiguracoes;
+    private javax.swing.JMenu btnMenu;
+    private javax.swing.JMenu btnUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblUsuarioImagem;
