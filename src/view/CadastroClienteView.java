@@ -7,6 +7,7 @@ import ViewModel.Cliente.EstadoVM;
 import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.PessoaFisicaVM;
 import ViewModel.Cliente.PessoaJuridicaVM;
+import ViewModel.Cliente.TipoDePessoa;
 import java.awt.event.ItemEvent;
 import java.text.ParseException;
 import java.util.List;
@@ -19,6 +20,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
     private CadastroClienteController cadastroClienteController;
     private IClienteVM cliente;
+    private TipoDePessoa tipoDePessoa;
     
     public CadastroClienteView() {
         initComponents();
@@ -31,13 +33,13 @@ public class CadastroClienteView extends javax.swing.JFrame {
         if(rbnPessoaFisica.isSelected()){
             cliente = new PessoaFisicaVM();
             ((PessoaFisicaVM)cliente).setCpf(txtCPF_CNPJ.getText());
-            setMascaraCPF();
+            tipoDePessoa = TipoDePessoa.PESSOA_FISICA;
         }
         
         if(rbnPessoaJuridica.isSelected()){
             cliente = new PessoaJuridicaVM();   
             ((PessoaJuridicaVM)cliente).setCnpj(txtCPF_CNPJ.getText());
-            setMascaraCNPJ();
+            tipoDePessoa = TipoDePessoa.PESSOA_JURIDICA;
         }
     }
      
@@ -476,7 +478,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         recuperaInformacoesDaTelaEPreencheObjetoCliente();
         limparCampos();
-        cadastroClienteController.SalvarCliente();
+        cadastroClienteController.SalvarCliente(tipoDePessoa, cliente);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
