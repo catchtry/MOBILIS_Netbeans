@@ -67,6 +67,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
         recuperaInformacoesEAtribuiEndereco();
         
         recuperaInformacoesEAtribuiContato();
+        
+        teste.setText(cliente.getClass().getTypeName());
          
     }
     
@@ -90,7 +92,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }
     
     private void testeCadastro(){
-        rbnPessoaFisica.setSelected(true);
+        //rbnPessoaFisica.setSelected(true);
         rbnPessoaJuridica.setSelected(false);
         txtCPF_CNPJ.setText("123.456.789-10");
         cbxUf.setSelectedIndex(1);
@@ -172,6 +174,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         txtTelefone = new javax.swing.JFormattedTextField();
         txtCelular = new javax.swing.JFormattedTextField();
         txtCep = new javax.swing.JFormattedTextField();
+        teste = new javax.swing.JFormattedTextField();
         CadastroClienteMenuView = new javax.swing.JPanel();
         btnApagar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -318,25 +321,34 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(CadastroClienteViewLayout.createSequentialGroup()
                                         .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rbnPessoaJuridica)
                                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(CadastroClienteViewLayout.createSequentialGroup()
+                                                .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(rbnPessoaJuridica)
+                                                    .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(44, 44, 44)
+                                                .addComponent(teste, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(33, 33, 33))))
         );
         CadastroClienteViewLayout.setVerticalGroup(
             CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastroClienteViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbnPessoaFisica)
-                    .addComponent(rbnPessoaJuridica))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCpfCnpj)
-                    .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CadastroClienteViewLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbnPessoaFisica)
+                            .addComponent(rbnPessoaJuridica))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCpfCnpj)
+                            .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(CadastroClienteViewLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(teste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
@@ -609,6 +621,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     private javax.swing.JLabel lblUF;
     private javax.swing.JRadioButton rbnPessoaFisica;
     private javax.swing.JRadioButton rbnPessoaJuridica;
+    private javax.swing.JFormattedTextField teste;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCPF_CNPJ;
     private javax.swing.JFormattedTextField txtCelular;
