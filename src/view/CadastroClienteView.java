@@ -29,6 +29,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         loadComboBoxUf(); 
         testeCadastro();
         
+        getContentPane().setBackground(Color.white);
     }
 
      private void verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ(){
@@ -185,11 +186,18 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         jMenuBar1 = new javax.swing.JMenuBar();
         btnMenu = new javax.swing.JMenu();
         btnUsuario = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         btnConfiguracoes = new javax.swing.JMenu();
         btnAjuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        CadastroClienteView.setBackground(new java.awt.Color(255, 255, 255));
 
         rbnPessoaFisica.setText("Pessoa Física");
         rbnPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
@@ -394,6 +402,8 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        CadastroClienteMenuView.setBackground(new java.awt.Color(255, 255, 255));
+
         btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
         btnApagar.setBorderPainted(false);
         btnApagar.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -460,12 +470,31 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenuBar1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jMenuBar1ComponentAdded(evt);
+            }
+        });
+
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
         btnMenu.setText("Menu");
         jMenuBar1.add(btnMenu);
 
         btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man-user.png"))); // NOI18N
         btnUsuario.setText("Usuário");
+
+        jMenuItem1.setText("Cadastrar");
+        btnUsuario.add(jMenuItem1);
+
+        jMenuItem2.setText("Alterar");
+        btnUsuario.add(jMenuItem2);
+
+        jMenuItem3.setText("Excluir");
+        btnUsuario.add(jMenuItem3);
+
+        jMenuItem4.setText("Pesquisar");
+        btnUsuario.add(jMenuItem4);
+
         jMenuBar1.add(btnUsuario);
 
         btnConfiguracoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings-gears.png"))); // NOI18N
@@ -609,6 +638,19 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCep;
     private javax.swing.JLabel lblCidade;

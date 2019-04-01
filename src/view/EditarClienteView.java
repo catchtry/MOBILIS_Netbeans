@@ -201,6 +201,13 @@ private void preencheCampos(IClienteVM cliente){
         jMenuBar1 = new javax.swing.JMenuBar();
         btnMenu = new javax.swing.JMenu();
         btnUsuario = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        btnMenu = new javax.swing.JMenu();
+        btnUsuario = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         btnConfiguracoes = new javax.swing.JMenu();
         btnAjuda = new javax.swing.JMenu();
 
@@ -484,6 +491,7 @@ private void preencheCampos(IClienteVM cliente){
                     .addComponent(btnApagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        setPreferredSize(new java.awt.Dimension(1024, 628));
 
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
         btnMenu.setText("Menu");
@@ -491,6 +499,19 @@ private void preencheCampos(IClienteVM cliente){
 
         btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man-user.png"))); // NOI18N
         btnUsuario.setText("Usuário");
+
+        jMenuItem1.setText("Cadastrar");
+        btnUsuario.add(jMenuItem1);
+
+        jMenuItem2.setText("Alterar");
+        btnUsuario.add(jMenuItem2);
+
+        jMenuItem3.setText("Excluir");
+        btnUsuario.add(jMenuItem3);
+
+        jMenuItem4.setText("Pesquisar");
+        btnUsuario.add(jMenuItem4);
+
         jMenuBar1.add(btnUsuario);
 
         btnConfiguracoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings-gears.png"))); // NOI18N
@@ -586,6 +607,19 @@ private void preencheCampos(IClienteVM cliente){
         }
     }
     
+            .addGap(0, 875, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -621,6 +655,7 @@ private void preencheCampos(IClienteVM cliente){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
+                new EditarClienteView().setVisible(true);
             }
         });
     }
@@ -668,5 +703,14 @@ private void preencheCampos(IClienteVM cliente){
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JFormattedTextField txtTelefone;
+    private javax.swing.JMenu btnAjuda;
+    private javax.swing.JMenu btnConfiguracoes;
+    private javax.swing.JMenu btnMenu;
+    private javax.swing.JMenu btnUsuario;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
