@@ -101,7 +101,7 @@ public class RegistroDeCompraDAO {
         
             try {
                 stm = con.prepareStatement("DELETE FROM registroDeCompra WHERE codigoR = ?");
-                //stm.setInt(1, rc.getCodigoR);
+                stm.setInt(1, rc.getCodigoR);
 
                 stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Excluido com sucesso");
