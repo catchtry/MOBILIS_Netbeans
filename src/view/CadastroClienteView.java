@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.text.MaskFormatter;
 
 
@@ -26,7 +27,9 @@ public class CadastroClienteView extends javax.swing.JFrame {
         initComponents();
         cadastroClienteController = new CadastroClienteController();
         limparCampos();
-        loadComboBoxUf();  
+        loadComboBoxUf(); 
+        testeCadastro();
+        
     }
 
      private void verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ(){
@@ -48,11 +51,11 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }
     
     private void recuperaInformacoesEAtribuiEndereco(){
-        
+       
         cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(), 
                                                    Integer.parseInt(txtNumero.getText()), txtBairro.getText(), 
-                                                   ((EstadoVM)cbxUf.getSelectedItem()).getNome(), 
-                                                   ((CidadeVM)cbxCidade.getSelectedItem()).getNome(),
+                                                   cbxUf.getSelectedItem().toString(), 
+                                                   cbxCidade.getSelectedItem().toString(),                                                   
                                                    txtComplemento.getText());
     }
     
@@ -87,6 +90,23 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 
     }
     
+    private void testeCadastro(){
+        rbnPessoaFisica.setSelected(true);
+        rbnPessoaJuridica.setSelected(false);
+        txtCPF_CNPJ.setText("364.350.148-09");
+        cbxUf.setSelectedIndex(1);
+        cbxCidade.setSelectedIndex(1);
+        txtNome.setText("Laís");
+        txtCep.setText("13183-761");
+        txtLogradouro.setText("Rua dos Melros");
+        txtNumero.setText("83");
+        txtBairro.setText("Chácara Recreio Alvorada");
+        txtComplemento.setText("IFSP");
+        txtTelefone.setText("(19) 2222-9637");
+        txtCelular.setText("(19) 99851-7455");
+        txtEmail.setText("laisjkl@hotmail.com");
+    }
+    
     private void loadComboBoxUf(){
         
         List<EstadoVM> estados;
@@ -94,7 +114,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         cbxUf.addItem("Selecione");
         
         for(EstadoVM estado : estados) {
-        cbxUf.addItem(estado.getUf());
+            cbxUf.addItem(estado.getNome());
         }
     }
     

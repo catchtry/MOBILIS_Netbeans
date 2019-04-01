@@ -5,10 +5,10 @@ package ViewModel.Cliente;
 public class PessoaFisicaVM implements IClienteVM{
     
     private String cpf;
-    private InformacaoGeralVM informacoesGerais;
+    private InformacaoGeralVM informacoesGerais = new InformacaoGeralVM();;
 
     public String getCpf() {
-        return cpf;
+        return cpf;  
     }
 
     public void setCpf(String cpf) {
