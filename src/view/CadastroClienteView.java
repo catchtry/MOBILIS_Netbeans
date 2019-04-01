@@ -168,16 +168,16 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         setTitle("Cadastro");
 
         rbnPessoaFisica.setText("Pessoa Física");
-        rbnPessoaFisica.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                rbnPessoaFisicaItemStateChanged(evt);
+        rbnPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnPessoaFisicaActionPerformed(evt);
             }
         });
 
         rbnPessoaJuridica.setText("Pessoa Jurídica");
-        rbnPessoaJuridica.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                rbnPessoaJuridicaItemStateChanged(evt);
+        rbnPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnPessoaJuridicaActionPerformed(evt);
             }
         });
 
@@ -459,14 +459,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBairroActionPerformed
 
-    private void rbnPessoaFisicaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbnPessoaFisicaItemStateChanged
-        rbnPessoaJuridica.setSelected(false);
-    }//GEN-LAST:event_rbnPessoaFisicaItemStateChanged
-
-    private void rbnPessoaJuridicaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbnPessoaJuridicaItemStateChanged
-        rbnPessoaFisica.setSelected(false);
-    }//GEN-LAST:event_rbnPessoaJuridicaItemStateChanged
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         recuperaInformacoesDaTelaEPreencheObjetoCliente();
         limparCampos();
@@ -480,6 +472,16 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
            loadComboBoxCidade();
         }
     }//GEN-LAST:event_cbxUfItemStateChanged
+
+    private void rbnPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaFisicaActionPerformed
+        rbnPessoaJuridica.setSelected(false);
+        setMascaraCPF();
+    }//GEN-LAST:event_rbnPessoaFisicaActionPerformed
+
+    private void rbnPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaJuridicaActionPerformed
+        rbnPessoaFisica.setSelected(false);
+        setMascaraCNPJ();
+    }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
 
     private void setMascaraCNPJ(){
         
