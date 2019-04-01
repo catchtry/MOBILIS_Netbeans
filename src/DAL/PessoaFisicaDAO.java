@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package DAL;
 
-import ViewModel.PessoaFisicaVM;
+import ViewModel.Cliente.PessoaFisicaVM;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,10 +12,6 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Thiago
- */
 public class PessoaFisicaDAO {
 
     public void criar(PessoaFisicaVM pf) {
@@ -28,17 +20,17 @@ public class PessoaFisicaDAO {
         try {
             stm = con.prepareStatement("INSERT INTO pessoafisica (cpf, nome, logradouro, cep, numero, bairro, cidade, uf, complemento, telefone, email, celular) values(?,?,?,?,?,?,?,?,?,?,?,?)");
             stm.setString(1, pf.getCpf());
-            stm.setString(2, pf.getNome());
-            stm.setString(3, pf.getLogradouro());
-            stm.setString(4, pf.getCep());
-            stm.setInt(5, pf.getNumero());
-            stm.setString(6, pf.getBairro());
-            stm.setString(7, pf.getCidade());
-            stm.setString(8, pf.getUf());
-            stm.setString(9, pf.getComplemento());
-            stm.setString(10, pf.getTelefone());
-            stm.setString(11, pf.getEmail());
-            stm.setString(12, pf.getCelular());
+            stm.setString(2, pf.getInformacoesGerais().getNome());
+            stm.setString(3, pf.getInformacoesGerais().getEndereco().getLogradouro());
+            stm.setString(4, pf.getInformacoesGerais().getEndereco().getCep());
+            stm.setInt(5, pf.getInformacoesGerais().getEndereco().getNumero());
+            stm.setString(6, pf.getInformacoesGerais().getEndereco().getBairro());
+            stm.setString(7, pf.getInformacoesGerais().getEndereco().getCidade());
+            stm.setString(8, pf.getInformacoesGerais().getEndereco().getUf());
+            stm.setString(9, pf.getInformacoesGerais().getEndereco().getComplemento());
+            stm.setString(10, pf.getInformacoesGerais().getContato().getTelefone());
+            stm.setString(11, pf.getInformacoesGerais().getContato().getEmail());
+            stm.setString(12, pf.getInformacoesGerais().getContato().getCelular());
 
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso");
@@ -47,10 +39,11 @@ public class PessoaFisicaDAO {
         } finally {
             ConexaoBanco.closeConnection(con, stm);
         }
+    }
         
         
 
-    public List<PessoaFisicaVM> ler() {
+    public List<PessoaFisicaVM> ler(){
         Connection con = ConexaoBanco.getConnection();
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -65,17 +58,15 @@ public class PessoaFisicaDAO {
                 PessoaFisicaVM pessoaf = new PessoaFisicaVM();
 
                 pessoaf.setCpf(rs.getString("cpf"));
-                pessoaf.setNome(rs.getString("nome"));
-                pessoaf.setLogradouro(rs.getString("logradouro"));
-                pessoaf.setCep(rs.getString("cep"));
-                pessoaf.setNumero(rs.getInt("numero"));
-                pessoaf.setBairro(rs.getString("bairro"));
-                pessoaf.setCidade(rs.getString("cidade"));
-                pessoaf.setUf(rs.getString("uf"));
-                pessoaf.setComplemtento(rs.getString("complemento"));
-                pessoaf.setTelefone(rs.getString("telefone"));
-                pessoaf.setEmail(rs.getString("email"));
-                pessoaf.setCelular(rs.getString("celular"));
+                pessoaf.getInformacoesGerais().setNome(rs.getString("nome"));
+                pessoaf.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
+                                                           rs.getInt("numero"), rs.getString("bairro"),
+                                                           rs.getString("uf"),rs.getString("cidade"),
+                                                           rs.getString("complemento"));
+           
+                pessoaf.getInformacoesGerais().setContato(rs.getString("telefone"), rs.getString("celular"),
+                                                          rs.getString("email"));
+                
                 pessoasf.add(pessoaf);
 
             }
@@ -85,7 +76,8 @@ public class PessoaFisicaDAO {
             ConexaoBanco.closeConnection(con, stm, rs);
         }
         return pessoasf;
-    }        
+    }  
+
         
 
     public void atualizar(PessoaFisicaVM pf) {
@@ -95,17 +87,17 @@ public class PessoaFisicaDAO {
         try {
             stm = con.prepareStatement("UPDATE SET pessoafisica cpf = ?, nome = ?, logradouro = ?, cep = ?, numero = ?, bairro = ?, cidade = ?, uf = ?, complemento = ?, telefone = ?, email = ?, celular =?) WHERE cpf = ?");
             stm.setString(1, pf.getCpf());
-            stm.setString(2, pf.getNome());
-            stm.setString(3, pf.getLogradouro());
-            stm.setString(4, pf.getCep());
-            stm.setInt(5, pf.getNumero());
-            stm.setString(6, pf.getBairro());
-            stm.setString(7, pf.getCidade());
-            stm.setString(8, pf.getUf());
-            stm.setString(9, pf.getComplemento());
-            stm.setString(10, pf.getTelefone());
-            stm.setString(11, pf.getEmail());
-            stm.setString(12, pf.getCelular());
+            stm.setString(2, pf.getInformacoesGerais().getNome());
+            stm.setString(3, pf.getInformacoesGerais().getEndereco().getLogradouro());
+            stm.setString(4, pf.getInformacoesGerais().getEndereco().getCep());
+            stm.setInt(5, pf.getInformacoesGerais().getEndereco().getNumero());
+            stm.setString(6, pf.getInformacoesGerais().getEndereco().getBairro());
+            stm.setString(7, pf.getInformacoesGerais().getEndereco().getCidade());
+            stm.setString(8, pf.getInformacoesGerais().getEndereco().getUf());
+            stm.setString(9, pf.getInformacoesGerais().getEndereco().getComplemento());
+            stm.setString(10, pf.getInformacoesGerais().getContato().getTelefone());
+            stm.setString(11, pf.getInformacoesGerais().getContato().getEmail());
+            stm.setString(12, pf.getInformacoesGerais().getContato().getCelular());
 
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
@@ -122,7 +114,7 @@ public class PessoaFisicaDAO {
         
             try {
                 stm = con.prepareStatement("DELETE FROM pessoafisica WHERE cpf = ?");
-                stm.setString(1, pf.getPlaca());
+                stm.setString(1, pf.getCpf());
 
                 stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Excluido com sucesso");
@@ -135,3 +127,4 @@ public class PessoaFisicaDAO {
     }
 
 }
+

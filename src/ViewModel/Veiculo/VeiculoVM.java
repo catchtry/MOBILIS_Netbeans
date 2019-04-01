@@ -13,7 +13,7 @@ public class VeiculoVM {
     private int numeroDePortas;
     private int origem;
     private String uf;
-    private String renavan;
+    private String renavam;
     private String cilindradas;
     private String marca;
     private Date anoDeFabricacao;
@@ -27,7 +27,8 @@ public class VeiculoVM {
     public String opcionais;
     private int restricoes;
     private int CondicaoVeiculo;
-
+    private int tipoDeVeiculo;
+    
     public String getPlaca() {
         return placa;
     }
@@ -84,12 +85,12 @@ public class VeiculoVM {
         this.uf = uf;
     }
 
-    public String getRenavan() {
-        return renavan;
+    public String getRenavam() {
+        return renavam;
     }
 
-    public void setRenavan(String renavan) {
-        this.renavan = renavan;
+    public void setRenavam(String renavam) {
+        this.renavam = renavam;
     }
 
     public String getCilindradas() {
@@ -194,6 +195,14 @@ public class VeiculoVM {
 
     public void setCondicaoVeiculo(int CondicaoVeiculo) {
         this.CondicaoVeiculo = CondicaoVeiculo;
+    }
+
+    public int getTipoDeVeiculo() {
+        return tipoDeVeiculo;
+    }
+
+    public void setTipoDeVeiculo(int tipoDeVeiculo) {
+        this.tipoDeVeiculo = tipoDeVeiculo;
     }
       
     

@@ -9,12 +9,12 @@ package view;
  *
  * @author DELL
  */
-public class CadastroView extends javax.swing.JFrame {
+public class CadastroClienteView extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastrarView
      */
-    public CadastroView() {
+    public CadastroClienteView() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class CadastroView extends javax.swing.JFrame {
         rbnPessoaFisica = new javax.swing.JRadioButton();
         rbnPessoaJuridica = new javax.swing.JRadioButton();
         lblCpfCnpj = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
         cbxUF = new javax.swing.JComboBox();
         cbxCidade = new javax.swing.JComboBox();
         lblUF = new javax.swing.JLabel();
@@ -71,7 +71,6 @@ public class CadastroView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
-        setPreferredSize(new java.awt.Dimension(1024, 628));
 
         rbnPessoaFisica.setText("Pessoa Física");
 
@@ -79,9 +78,9 @@ public class CadastroView extends javax.swing.JFrame {
 
         lblCpfCnpj.setText("CPF / CNPJ : ");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtCPFActionPerformed(evt);
             }
         });
 
@@ -164,7 +163,7 @@ public class CadastroView extends javax.swing.JFrame {
                                 .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(CadastroClienteViewLayout.createSequentialGroup()
                                         .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(rbnPessoaJuridica)
                                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,7 +193,7 @@ public class CadastroView extends javax.swing.JFrame {
                     .addComponent(rbnPessoaJuridica))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCpfCnpj))
                 .addGap(18, 18, 18)
                 .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -353,9 +352,9 @@ public class CadastroView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtCPFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,21 +373,23 @@ public class CadastroView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroView().setVisible(true);
+                new CadastroClienteView().setVisible(true);
             }
         });
     }
@@ -413,7 +414,6 @@ public class CadastroView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -435,5 +435,6 @@ public class CadastroView extends javax.swing.JFrame {
     private javax.swing.JLabel lblUF;
     private javax.swing.JRadioButton rbnPessoaFisica;
     private javax.swing.JRadioButton rbnPessoaJuridica;
+    private javax.swing.JTextField txtCPF;
     // End of variables declaration//GEN-END:variables
 }

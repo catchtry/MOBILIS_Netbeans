@@ -9,18 +9,16 @@ import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.PessoaJuridicaVM;
 import ViewModel.Cliente.PessoaFisicaVM;
 
-/**
- *
- * @author lais.lopes
- */
+
 public class MAIN {
     
     public static void main(String[] args) {
-        IClienteVM cliente;
+        /*IClienteVM cliente;
         cliente.getInformacoesGerais().getContato();
         if(true)
             ((PessoaFisicaVM)cliente).getCpf();
         else
             ((PessoaJuridicaVM)cliente).getCnpj();
+                */
     }
 }

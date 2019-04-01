@@ -36,22 +36,22 @@ public class CadastroClienteView2 extends javax.swing.JFrame {
     }
     
     private void recuperaInformacoesEAtribuiContato(){
-        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), txtCelular.getText(), txtEmail.getText());
+        //cliente.getInformacoesGerais().setContato(txtTelefone.getText(), txtCelular.getText(), txtEmail.getText());
     }
     
     private void recuperaInformacoesEAtribuiEndereco(){
         
-        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(), 
+        /*cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(), 
                                                    txtNumero.getText(), txtBairro.getText(), 
                                                    ((EstadoVM)cbxUf.getSelectedItem()).getNome(), 
                                                    ((CidadeVM)cbxCidade.getSelectedItem()).getNome(),
-                                                   txtComplemento.getText());
+                                                   txtComplemento.getText());*/
     }
     private void recuperaInformacoesDaTelaEPreencheObjetoCliente(){
         
         verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ();
         
-        cliente.getInformacoesGerais().setNome(txtNome.getText());
+        //cliente.getInformacoesGerais().setNome(txtNome.getText());
         
         recuperaInformacoesEAtribuiEndereco();
         
@@ -61,7 +61,7 @@ public class CadastroClienteView2 extends javax.swing.JFrame {
     
     private void limparCampos(){
         
-        rbnPessoaFisica.setSelected(false);
+        /*rbnPessoaFisica.setSelected(false);
         rbnPessoaJuridica.setSelected(false);
         txtCPF.setText("");
         txtCNPJ.setText("");
@@ -75,7 +75,7 @@ public class CadastroClienteView2 extends javax.swing.JFrame {
         txtComplemento.setText("");
         txtTelefone.setText("");
         txtCelular.setText("");
-        txtEmail.setText("");
+        txtEmail.setText("");*/
                 
     }
     

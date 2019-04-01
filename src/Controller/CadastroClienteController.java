@@ -5,7 +5,7 @@ import ViewModel.Cliente.EstadoFactoryVM;
 import ViewModel.Cliente.EstadoVM;
 import java.util.List;
 
-private 
+
 public class CadastroClienteController {
     
     private List<EstadoVM> estados;
@@ -22,7 +22,7 @@ public class CadastroClienteController {
         return estados.get(id);
     }
     
-    public void SalvarCliente(bool){
+    public void SalvarCliente(){
         
     }
            

@@ -38,7 +38,7 @@ public class VeiculoDAO {
             stm.setInt(7,v.getOrigem());
             stm.setString(8,v.getUf());
             stm.setString(9,v.getRenavam());
-            stm.setString(10,v.getCilindrada());
+            stm.setString(10,v.getCilindradas());
             stm.setString(11,v.getMarca());
             stm.setDate(12,v.getAnoDeFabricacao());
             stm.setString(13,v.getModelo());
@@ -58,6 +58,7 @@ public class VeiculoDAO {
         }finally{
             ConexaoBanco.closeConnection(con, stm);
         }
+    }
         
    
     public List<VeiculoVM> ler(){
@@ -73,27 +74,27 @@ public class VeiculoDAO {
         
                 VeiculoVM veiculo = new VeiculoVM();
             
-                veiculo.setPlaca(rs.getPlaca("placa"));
-                veiculo.setChasse(rs.getChassi("chassi"));
-                veiculo.setQuilomeragem(rs.getQuilometragem("quilometragem"));
-                veiculo.setLotacaoMaxima(rs.getLotacaoMaxima("lotacaoMaxima"));
-                veiculo.setNumeroDePortas(rs.getNumeroDePortas("numeroDePortas"));
-                veiculo.setTipoDeVeiculo(rs.getTipoDeVeiculo("tipoDeVeiculo"));
-                veiculo.setOrigem(rs.getOrigem("origem"));
-                veiculo.setUf(rs.getUf("uf"));
-                veiculo.setRenavan(rs.getRenavan("renavan"));
-                veiculo.setCilindrada(rs.getCilindrada("cilindrada"));
-                veiculo.setMarca(rs.getMarca("marca"));
-                veiculo.setAnoDeFabricacao(rs.getAnoDeFabricacao("anoDeFabricacao"));
-                veiculo.setModelo(rs.getModelo("modelo"));
-                veiculo.setAnoDoModelo(rs.getAnoDoModelo("anoDoModelo"));
-                veiculo.setVersao(rs.getVersao("versao"));
-                veiculo.setCategoria(rs.getCategoria("categoria"));
-                veiculo.setCor(rs.getCor("cor"));
-                veiculo.setCombustiveil(rs.getCombustivel("combustivel"));
-                veiculo.setCambio(rs.getCambio("cambio"));
-                veiculo.setOpcionais(rs.getOpcionais("opcionais"));
-                veiculo.setRestricoes(rs.getRestricoes("restricao"));
+                veiculo.setPlaca(rs.getString("placa"));
+                veiculo.setChassi(rs.getString("chassi"));
+                veiculo.setQuilometragem(rs.getInt("quilometragem"));
+                veiculo.setLotacaoMaxima(rs.getInt("lotacaoMaxima"));
+                veiculo.setNumeroDePortas(rs.getInt("numeroDePortas"));
+                veiculo.setTipoDeVeiculo(rs.getInt("tipoDeVeiculo"));
+                veiculo.setOrigem(rs.getInt("origem"));
+                veiculo.setUf(rs.getString("uf"));
+                veiculo.setRenavam(rs.getString("renavan"));
+                veiculo.setCilindradas(rs.getString("cilindrada"));
+                veiculo.setMarca(rs.getString("marca"));
+                veiculo.setAnoDeFabricacao(rs.getDate("anoDeFabricacao"));
+                veiculo.setModelo(rs.getString("modelo"));
+                veiculo.setAnoDoModelo(rs.getDate("anoDoModelo"));
+                veiculo.setVersao(rs.getString("versao"));
+                veiculo.setCategoria(rs.getInt("categoria"));
+                veiculo.setCor(rs.getString("cor"));
+                veiculo.setCombustivel(rs.getInt("combustivel"));
+                veiculo.setCambio(rs.getInt("cambio"));
+                veiculo.setOpcionais(rs.getString("opcionais"));
+                veiculo.setRestricoes(rs.getInt("restricao"));
                 veiculos.add(veiculo);
             }
         } catch (SQLException ex) {
@@ -119,7 +120,7 @@ public class VeiculoDAO {
             stm.setInt(7, v.getOrigem());
             stm.setString(8, v.getUf());
             stm.setString(9, v.getRenavam());
-            stm.setString(10, v.getCilindrada());
+            stm.setString(10, v.getCilindradas());
             stm.setString(11, v.getMarca());
             stm.setDate(12, v.getAnoDeFabricacao());
             stm.setString(13, v.getModelo());

@@ -208,7 +208,7 @@ public class ClienteView extends javax.swing.JFrame {
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         // TODO add your handling code here:
-        CadastroView cliente = new CadastroView(); // Cria novo objeto do tipo JFrame
+        CadastroClienteView cliente = new CadastroClienteView(); // Cria novo objeto do tipo JFrame
         cliente.setVisible(true);  // Torna o JFrame visivel
         this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_btnClienteActionPerformed
