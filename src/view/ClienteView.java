@@ -249,8 +249,8 @@ public class ClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
-        EditarClienteView editarCliente = new EditarClienteView(clienteController);
-        editarCliente.setVisible(true);
+        //EditarClienteView editarCliente = new EditarClienteView(clienteController);
+        //editarCliente.setVisible(true);
         this.dispose();  
     }//GEN-LAST:event_btnVendaActionPerformed
     private void jMenuBar1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuBar1ComponentAdded
