@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PessoaJuridicaDAO {
+    
     public void criar(PessoaJuridicaVM pj) {
         Connection con = ConexaoBanco.getConnection();
         PreparedStatement stm = null;
@@ -44,6 +45,7 @@ public class PessoaJuridicaDAO {
         }
     }
         
+    }    
         
 
     public List<PessoaJuridicaVM> ler() {
