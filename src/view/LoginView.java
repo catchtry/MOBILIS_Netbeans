@@ -44,6 +44,7 @@ public class LoginView extends javax.swing.JFrame {
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img-user-padrao.png"))); // NOI18N
 
+        LoginView.setBackground(new java.awt.Color(255, 255, 255));
         LoginView.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnLogar.setText("Logar");

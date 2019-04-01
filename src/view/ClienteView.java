@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.Color;
+
 /**
  *
  * @author ht3000231
@@ -16,6 +18,7 @@ public class ClienteView extends javax.swing.JFrame {
      */
     public ClienteView() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     /**
@@ -114,6 +117,8 @@ public class ClienteView extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        ClienteMenu.setBackground(new java.awt.Color(255, 255, 255));
 
         btnCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N

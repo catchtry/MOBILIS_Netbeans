@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.Color;
+
 /**
  *
  * @author DELL
@@ -16,6 +18,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
      */
     public CadastroClienteView() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     /**
@@ -71,6 +74,9 @@ public class CadastroClienteView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        CadastroClienteView.setBackground(new java.awt.Color(255, 255, 255));
 
         rbnPessoaFisica.setText("Pessoa Física");
 
@@ -239,6 +245,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 .addComponent(btnSalvar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        CadastroClienteMenuView.setBackground(new java.awt.Color(255, 255, 255));
 
         btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
         btnApagar.setBorderPainted(false);
