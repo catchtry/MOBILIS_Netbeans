@@ -8,6 +8,7 @@ import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.PessoaFisicaVM;
 import ViewModel.Cliente.PessoaJuridicaVM;
 import ViewModel.Cliente.TipoDePessoa;
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.text.ParseException;
 import java.util.List;
