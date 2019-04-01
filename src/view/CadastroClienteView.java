@@ -54,8 +54,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
        
         cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(), 
                                                    Integer.parseInt(txtNumero.getText()), txtBairro.getText(), 
-                                                   cbxUf.getSelectedItem().toString(), 
-                                                   cbxCidade.getSelectedItem().toString(),                                                   
+                                                   cbxCidade.getSelectedItem().toString(),
+                                                   cbxUf.getSelectedItem().toString(),                                                  
                                                    txtComplemento.getText());
     }
     
