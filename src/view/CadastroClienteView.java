@@ -8,6 +8,7 @@ import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.PessoaFisicaVM;
 import ViewModel.Cliente.PessoaJuridicaVM;
 import ViewModel.Cliente.TipoDePessoa;
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.text.ParseException;
 import java.util.List;
@@ -183,15 +184,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         btnPesquisar = new javax.swing.JButton();
         btnCadastro = new javax.swing.JButton();
         lblCliente = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        btnMenu = new javax.swing.JMenu();
-        btnUsuario = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        btnConfiguracoes = new javax.swing.JMenu();
-        btnAjuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
@@ -470,43 +462,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenuBar1.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jMenuBar1ComponentAdded(evt);
-            }
-        });
-
-        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
-        btnMenu.setText("Menu");
-        jMenuBar1.add(btnMenu);
-
-        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man-user.png"))); // NOI18N
-        btnUsuario.setText("Usuário");
-
-        jMenuItem1.setText("Cadastrar");
-        btnUsuario.add(jMenuItem1);
-
-        jMenuItem2.setText("Alterar");
-        btnUsuario.add(jMenuItem2);
-
-        jMenuItem3.setText("Excluir");
-        btnUsuario.add(jMenuItem3);
-
-        jMenuItem4.setText("Pesquisar");
-        btnUsuario.add(jMenuItem4);
-
-        jMenuBar1.add(btnUsuario);
-
-        btnConfiguracoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings-gears.png"))); // NOI18N
-        btnConfiguracoes.setText("Configurações");
-        jMenuBar1.add(btnConfiguracoes);
-
-        btnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/information.png"))); // NOI18N
-        btnAjuda.setText("Ajuda");
-        jMenuBar1.add(btnAjuda);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -621,36 +576,18 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroClienteMenuView;
     private javax.swing.JPanel CadastroClienteView;
-    private javax.swing.JMenu btnAjuda;
     private javax.swing.JButton btnApagar;
     private javax.swing.JButton btnCadastro;
-    private javax.swing.JMenu btnConfiguracoes;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnFiltrar;
-    private javax.swing.JMenu btnMenu;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JMenu btnUsuario;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbxCidade;
     private javax.swing.JComboBox cbxUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCep;
     private javax.swing.JLabel lblCidade;
