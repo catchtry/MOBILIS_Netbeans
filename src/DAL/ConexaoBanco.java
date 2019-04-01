@@ -11,20 +11,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author Amanda
- */
+
 public class ConexaoBanco {
     public Statement stm;
     public ResultSet rs;
     public Connection con;
     private static final String DRIVER = "org.postgresql.Driver";
-    private static final String URL = "jdbc:postgresql:localhost:5432/mobilis";
+    private static final String URL = "jdbc:postgresql://localhost:5432/mobilis";
     private static final String USER = "postgres";
     private static final String PASSWORD = "root";
     

@@ -77,8 +77,37 @@ public class PessoaFisicaDAO {
         }
         return pessoasf;
     }  
+    
+    public PessoaFisicaVM lerPessoaFisicaByCPF(String cpf){
+        Connection con = ConexaoBanco.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
 
-        
+        PessoaFisicaVM pessoaf = new PessoaFisicaVM();
+        pessoaf.setCpf(cpf);
+        try {
+            stm = con.prepareStatement("SELECT * FROM pessoafisica WHERE cpf = ?");
+            stm.setString(1, pessoaf.getCpf());
+            rs = stm.executeQuery();
+            while (rs.next()) {
+
+                pessoaf.setCpf(rs.getString("cpf"));
+                pessoaf.getInformacoesGerais().setNome(rs.getString("nome"));
+                pessoaf.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
+                                                           rs.getInt("numero"), rs.getString("bairro"),
+                                                           rs.getString("uf"),rs.getString("cidade"),
+                                                           rs.getString("complemento"));
+           
+                pessoaf.getInformacoesGerais().setContato(rs.getString("telefone"), rs.getString("celular"),
+                                                          rs.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConexaoBanco.closeConnection(con, stm, rs);
+        }
+        return pessoaf;
+    }         
 
     public void atualizar(PessoaFisicaVM pf) {
         Connection con = ConexaoBanco.getConnection();

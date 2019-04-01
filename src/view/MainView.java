@@ -155,11 +155,12 @@ public class MainView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       CadastroClienteView2 cliente = new CadastroClienteView2(); // Cria novo objeto do tipo JFrame
+       ClienteView cliente = new ClienteView(); // Cria novo objeto do tipo JFrame
        cliente.setVisible(true);  // Torna o JFrame visivel
        this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_jButton1ActionPerformed

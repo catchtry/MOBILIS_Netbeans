@@ -5,15 +5,16 @@
  */
 package view;
 
+import Controller.ClienteController;
+
 /**
  *
  * @author ht3000231
  */
 public class ClienteView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form menu
-     */
+    ClienteController clienteController = new ClienteController();
+    
     public ClienteView() {
         initComponents();
     }
@@ -135,6 +136,11 @@ public class ClienteView extends javax.swing.JFrame {
         btnVenda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
         btnVenda.setText("Editar");
+        btnVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ClienteMenuLayout = new javax.swing.GroupLayout(ClienteMenu);
         ClienteMenu.setLayout(ClienteMenuLayout);
@@ -207,11 +213,17 @@ public class ClienteView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        // TODO add your handling code here:
-        CadastroClienteView cliente = new CadastroClienteView(); // Cria novo objeto do tipo JFrame
-        cliente.setVisible(true);  // Torna o JFrame visivel
+       
+        CadastroClienteView cadastroCliente = new CadastroClienteView(clienteController); // Cria novo objeto do tipo JFrame
+        cadastroCliente.setVisible(true);  // Torna o JFrame visivel
         this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
+        EditarClienteView editarCliente = new EditarClienteView(clienteController);
+        editarCliente.setVisible(true);
+        this.dispose();  
+    }//GEN-LAST:event_btnVendaActionPerformed
 
     /**
      * @param args the command line arguments
