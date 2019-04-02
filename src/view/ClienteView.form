@@ -61,7 +61,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblCliente" min="-2" pref="169" max="-2" attributes="0"/>
                   <EmptySpace pref="275" max="32767" attributes="0"/>
-                  <Component id="btnAdicionarCliente" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btnCadastrarCliente_2" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnPesquisarCliente_2" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -80,7 +80,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="lblCliente" max="32767" attributes="0"/>
-                      <Component id="btnAdicionarCliente" max="32767" attributes="0"/>
+                      <Component id="btnCadastrarCliente_2" max="32767" attributes="0"/>
                       <Component id="btnPesquisarCliente_2" max="32767" attributes="0"/>
                       <Component id="btnFiltrarCliente" max="32767" attributes="0"/>
                       <Component id="btnEditarCliente_2" max="32767" attributes="0"/>
@@ -108,6 +108,9 @@
               <Dimension value="[50, 50]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletarCliente_2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEditarCliente_2">
           <Properties>
@@ -125,6 +128,9 @@
               <Dimension value="[50, 50]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarCliente_2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnFiltrarCliente">
           <Properties>
@@ -142,6 +148,9 @@
               <Dimension value="[50, 50]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFiltrarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnPesquisarCliente_2">
           <Properties>
@@ -159,8 +168,11 @@
               <Dimension value="[50, 50]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarCliente_2ActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAdicionarCliente">
+        <Component class="javax.swing.JButton" name="btnCadastrarCliente_2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/add.png"/>
@@ -176,6 +188,9 @@
               <Dimension value="[50, 50]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarCliente_2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente">
           <Properties>
@@ -255,6 +270,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Pesquisar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDeletarCliente">
           <Properties>
@@ -266,6 +284,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Apagar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEditarCliente">
           <Properties>
