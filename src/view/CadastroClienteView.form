@@ -240,7 +240,6 @@
           </Properties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbxUfItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxUfActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbxCidade">
@@ -267,9 +266,6 @@
         <Component class="javax.swing.JTextField" name="txtNumero">
         </Component>
         <Component class="javax.swing.JTextField" name="txtBairro">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBairroActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtComplemento">
         </Component>

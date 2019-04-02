@@ -1,14 +1,12 @@
-
 package view;
 
 import Controller.ClienteController;
 import java.awt.Color;
 
-
 public class ClienteView extends javax.swing.JFrame {
 
     ClienteController clienteController = new ClienteController();
-    
+
     public ClienteView() {
         initComponents();
         getContentPane().setBackground(Color.white);
@@ -219,16 +217,16 @@ public class ClienteView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
-       
+
         CadastroClienteView cadastroCliente = new CadastroClienteView(clienteController); // Cria novo objeto do tipo JFrame
         cadastroCliente.setVisible(true);  // Torna o JFrame visivel
         this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
     private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
-        //EditarClienteView editarCliente = new EditarClienteView(clienteController);
-        //editarCliente.setVisible(true);
-        this.dispose();  
+        EditarClienteView editarCliente = new EditarClienteView(clienteController);
+        editarCliente.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnEditarClienteActionPerformed
 
     private void btnPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteActionPerformed

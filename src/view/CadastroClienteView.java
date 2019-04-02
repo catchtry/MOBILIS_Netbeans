@@ -1,4 +1,3 @@
-
 package view;
 
 import Controller.ClienteController;
@@ -16,65 +15,56 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.MaskFormatter;
 
-
 public class CadastroClienteView extends javax.swing.JFrame {
 
     private ClienteController clienteController;
     private IClienteVM cliente;
     private TipoDePessoa tipoDePessoa;
-    
+
     public CadastroClienteView(ClienteController clienteController) {
         initComponents();
         this.clienteController = clienteController;
-        limparCampos();
-        loadComboBoxUf(); 
+        limparCamposDaTela();
+        carregarComboBoxUfComListaDeEstados();
         testeCadastro();
         getContentPane().setBackground(Color.white);
     }
 
-     private void verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ(){
-        if(rbnPessoaFisica.isSelected()){
+    private void verificarSeEhPessoaFisicaOuJuridicaEAtribuirCPFOuCNPJ() {
+        if (rbnPessoaFisica.isSelected()) {
             cliente = new PessoaFisicaVM();
-            ((PessoaFisicaVM)cliente).setCpf(txtCPF_CNPJ.getText());
+            ((PessoaFisicaVM) cliente).setCpf(txtCPF_CNPJ.getText());
             tipoDePessoa = TipoDePessoa.PESSOA_FISICA;
         }
-        
-        if(rbnPessoaJuridica.isSelected()){
-            cliente = new PessoaJuridicaVM();   
-            ((PessoaJuridicaVM)cliente).setCnpj(txtCPF_CNPJ.getText());
+        if (rbnPessoaJuridica.isSelected()) {
+            cliente = new PessoaJuridicaVM();
+            ((PessoaJuridicaVM) cliente).setCnpj(txtCPF_CNPJ.getText());
             tipoDePessoa = TipoDePessoa.PESSOA_JURIDICA;
         }
     }
-     
-    private void recuperaInformacoesEAtribuiContato(){
-        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), txtCelular.getText(), txtEmail.getText());
+
+    private void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
+        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), 
+                                                   txtCelular.getText(), 
+                                                   txtEmail.getText());
     }
-    
-    private void recuperaInformacoesEAtribuiEndereco(){
-       
-        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(), 
-                                                   Integer.parseInt(txtNumero.getText()), txtBairro.getText(), 
+
+    private void recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente() {
+        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(),
+                                                   Integer.parseInt(txtNumero.getText()), txtBairro.getText(),
                                                    cbxCidade.getSelectedItem().toString(),
-                                                   cbxUf.getSelectedItem().toString(),                                                  
+                                                   cbxUf.getSelectedItem().toString(),
                                                    txtComplemento.getText());
     }
-    
-    private void recuperaInformacoesDaTelaEPreencheObjetoCliente(){
-        
-        verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ();
-        
+
+    private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
+        verificarSeEhPessoaFisicaOuJuridicaEAtribuirCPFOuCNPJ();
         cliente.getInformacoesGerais().setNome(txtNome.getText());
-        
-        recuperaInformacoesEAtribuiEndereco();
-        
-        recuperaInformacoesEAtribuiContato();
-        
-        teste.setText(cliente.getClass().getTypeName());
-         
+        recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
+        recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
     }
-    
-    private void limparCampos(){
-        
+
+    private void limparCamposDaTela() {
         rbnPessoaFisica.setSelected(false);
         rbnPessoaJuridica.setSelected(false);
         txtCPF_CNPJ.setText("");
@@ -89,10 +79,9 @@ public class CadastroClienteView extends javax.swing.JFrame {
         txtTelefone.setText("");
         txtCelular.setText("");
         txtEmail.setText("");
-                
     }
-    
-    private void testeCadastro(){
+
+    private void testeCadastro() {
         //rbnPessoaFisica.setSelected(true);
         rbnPessoaJuridica.setSelected(false);
         txtCPF_CNPJ.setText("123.456.789-10");
@@ -108,40 +97,35 @@ public class CadastroClienteView extends javax.swing.JFrame {
         txtCelular.setText("(19) 99851-7455");
         txtEmail.setText("laisjkl@hotmail.com");
     }
-    
-    private void loadComboBoxUf(){
-        
+
+    private void carregarComboBoxUfComListaDeEstados() {
         List<EstadoVM> estados;
         estados = clienteController.GetEstados();
         cbxUf.addItem("Selecione");
-        
-        for(EstadoVM estado : estados) {
+        for (EstadoVM estado : estados) {
             cbxUf.addItem(estado.getNome());
         }
     }
-    
-private void loadComboBoxCidade(){
-        
-        if(cbxUf.getSelectedIndex() == 0){
-            limpaComboBoxEAdicionaOpcaoSelecione();
+
+    private void carregarComboBoxCidadeComListaDeCidades() {
+        if (cbxUf.getSelectedIndex() == 0) {
+            limparComboBoxCidadeEAdicionarOpcaoSelecione();
         }
-        
-        if(cbxUf.getSelectedIndex() > 0){
-            limpaComboBoxEAdicionaOpcaoSelecione();
+        if (cbxUf.getSelectedIndex() > 0) {
+            limparComboBoxCidadeEAdicionarOpcaoSelecione();
             EstadoVM estadoSelecionado;
             estadoSelecionado = clienteController.GetEstadoById(cbxUf.getSelectedIndex() - 1);
-            
-        for(CidadeVM cidade : estadoSelecionado.getListaDeCidades()){
-            cbxCidade.addItem(cidade.getNome());
+            for (CidadeVM cidade : estadoSelecionado.getListaDeCidades()) {
+                cbxCidade.addItem(cidade.getNome());
+            }
         }
     }
-}
-    
-private void limpaComboBoxEAdicionaOpcaoSelecione(){
-    cbxCidade.removeAllItems();
-    cbxCidade.addItem("Selecione");
-}
-    
+
+    private void limparComboBoxCidadeEAdicionarOpcaoSelecione() {
+        cbxCidade.removeAllItems();
+        cbxCidade.addItem("Selecione");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -211,21 +195,10 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                 cbxUfItemStateChanged(evt);
             }
         });
-        cbxUf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxUfActionPerformed(evt);
-            }
-        });
 
         lblUF.setText("UF :");
 
         lblCidade.setText("Cidade :");
-
-        txtBairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBairroActionPerformed(evt);
-            }
-        });
 
         lblNome.setText("Nome / Razão :");
 
@@ -481,25 +454,15 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxUfActionPerformed
-
-    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        recuperaInformacoesDaTelaEPreencheObjetoCliente();
-        limparCampos();
+        recuperarInformacoesDaTelaEPreencherObjetoCliente();
+        limparCamposDaTela();
         clienteController.salvarCliente(tipoDePessoa, cliente);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
-        int state = evt.getStateChange();
-        if(state == ItemEvent.SELECTED){
-  
-           loadComboBoxCidade();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            carregarComboBoxCidadeComListaDeCidades();
         }
     }//GEN-LAST:event_cbxUfItemStateChanged
 
@@ -513,30 +476,28 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         setMascaraCNPJ();
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
 
-    private void setMascaraCNPJ(){
-        
+    private void setMascaraCNPJ() {
+
         try {
             MaskFormatter mascaraCNPJ = new MaskFormatter("###.###.###/####-##");
-            
-            txtCPF_CNPJ.setFormatterFactory(null);  
+            txtCPF_CNPJ.setFormatterFactory(null);
             txtCPF_CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mascaraCNPJ));
         } catch (ParseException ex) {
             Logger.getLogger(CadastroClienteView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void setMascaraCPF(){
-        
+
+    private void setMascaraCPF() {
         try {
             MaskFormatter mascaraCPF = new MaskFormatter("###.###.###-##");
-            
-            txtCPF_CNPJ.setFormatterFactory(null);  
+
+            txtCPF_CNPJ.setFormatterFactory(null);
             txtCPF_CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mascaraCPF));
         } catch (ParseException ex) {
             Logger.getLogger(CadastroClienteView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -567,7 +528,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
