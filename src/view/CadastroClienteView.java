@@ -29,8 +29,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
         limparCampos();
         loadComboBoxUf(); 
         testeCadastro();
-        
-        
+        getContentPane().setBackground(Color.white);
     }
 
      private void verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ(){
