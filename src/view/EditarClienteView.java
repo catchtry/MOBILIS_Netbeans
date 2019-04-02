@@ -194,11 +194,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         teste = new javax.swing.JFormattedTextField();
         btnPesquisar1 = new javax.swing.JButton();
         CadastroClienteMenuView = new javax.swing.JPanel();
-        btnApagar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnFiltrar = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnCadastro = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
         lblCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -287,8 +283,9 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
             ex.printStackTrace();
         }
 
-        btnPesquisar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
+        btnPesquisar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Lupa_20x20.png"))); // NOI18N
         btnPesquisar1.setBorderPainted(false);
+        btnPesquisar1.setContentAreaFilled(false);
         btnPesquisar1.setMaximumSize(new java.awt.Dimension(50, 50));
         btnPesquisar1.setMinimumSize(new java.awt.Dimension(50, 50));
         btnPesquisar1.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -354,10 +351,11 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                                             .addGroup(CadastroClienteViewLayout.createSequentialGroup()
                                                 .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(rbnPessoaJuridica)
-                                                    .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(CadastroClienteViewLayout.createSequentialGroup()
+                                                        .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(btnPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(31, 31, 31)
                                                 .addComponent(teste, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(33, 33, 33))))
@@ -371,17 +369,19 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                         .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rbnPessoaFisica)
                             .addComponent(rbnPessoaJuridica))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCpfCnpj)
-                            .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CadastroClienteViewLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCpfCnpj)
+                                    .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroClienteViewLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(CadastroClienteViewLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(teste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CadastroClienteViewLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnPesquisar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(teste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -423,43 +423,25 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(btnSalvar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         CadastroClienteMenuView.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
-        btnApagar.setBorderPainted(false);
-        btnApagar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnApagar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnApagar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
-        btnEditar.setBorderPainted(false);
-        btnEditar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnEditar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnEditar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filter.png"))); // NOI18N
-        btnFiltrar.setBorderPainted(false);
-        btnFiltrar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnFiltrar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnFiltrar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
-        btnPesquisar.setBorderPainted(false);
-        btnPesquisar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
-        btnCadastro.setBorderPainted(false);
-        btnCadastro.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnCadastro.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnCadastro.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home_48x48.png"))); // NOI18N
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnHome.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnHome.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         lblCliente.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        lblCliente.setText("Cadastro");
+        lblCliente.setText("Editar");
 
         javax.swing.GroupLayout CadastroClienteMenuViewLayout = new javax.swing.GroupLayout(CadastroClienteMenuView);
         CadastroClienteMenuView.setLayout(CadastroClienteMenuViewLayout);
@@ -469,15 +451,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                 .addContainerGap()
                 .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         CadastroClienteMenuViewLayout.setVerticalGroup(
@@ -486,11 +460,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                 .addContainerGap()
                 .addGroup(CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnApagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -545,6 +515,10 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         rbnPessoaFisica.setSelected(false);
         setMascaraCNPJ();
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisar1ActionPerformed
         cliente = clienteController.lerCliente(tipoDePessoa, txtCPF_CNPJ.getText());
@@ -617,11 +591,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroClienteMenuView;
     private javax.swing.JPanel CadastroClienteView;
-    private javax.swing.JButton btnApagar;
-    private javax.swing.JButton btnCadastro;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnFiltrar;
-    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPesquisar1;
     private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
