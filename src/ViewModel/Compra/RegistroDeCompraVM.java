@@ -5,6 +5,7 @@ import ViewModel.Cliente.PessoaJuridicaVM;
 import ViewModel.Cliente.PessoaFisicaVM;
 import ViewModel.FichaDeAtendimento.FichaDeAtendimentoVM;
 import ViewModel.Veiculo.VeiculoVM;
+import java.util.List;
 
 
 public class RegistroDeCompraVM {
@@ -16,6 +17,7 @@ public class RegistroDeCompraVM {
     private AvaliacaoDoVeiculoVM avaliacaoDoVeiculo;
     private double valorDeCompra;
     private double valorDeVenda;
+    public int getCodigoR;
 
     public FichaDeAtendimentoVM getFichaDeAtendimento() {
         return FichaDeAtendimento;
@@ -47,6 +49,10 @@ public class RegistroDeCompraVM {
 
     public void setValorDeVenda(double valorDeVenda) {
         this.valorDeVenda = valorDeVenda;
+    }
+
+    public void add(List<RegistroDeCompraVM> registrocompra) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

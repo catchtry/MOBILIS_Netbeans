@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package DAL;
 
 import ViewModel.Cliente.PessoaJuridicaVM;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class PessoaJuridicaDAO {
     
@@ -43,10 +39,7 @@ public class PessoaJuridicaDAO {
         } finally {
             ConexaoBanco.closeConnection(con, stm);
         }
-    }
-        
-    }    
-        
+    }      
 
     public List<PessoaJuridicaVM> ler() {
         Connection con = ConexaoBanco.getConnection();

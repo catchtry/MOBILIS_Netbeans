@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package DAL;
 
-import ViewModel.AvaliacaoDoVeiculoVM;
-import ViewModel.FichaDeAtendimentoVM;
-import ViewModel.PessoaFisicaVM;
-import ViewModel.PessoaJuridicaVM;
-import ViewModel.RegistroDeCompraVM;
-import ViewModel.VeiculoVM;
+import ViewModel.Compra.AvaliacaoDoVeiculoVM;
+import ViewModel.FichaDeAtendimento.FichaDeAtendimentoVM;
+import ViewModel.Cliente.PessoaFisicaVM;
+import ViewModel.Cliente.PessoaJuridicaVM;
+import ViewModel.Compra.RegistroDeCompraVM;
+import ViewModel.Veiculo.VeiculoVM;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,10 +17,6 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Thiago
- */
 public class RegistroDeCompraDAO {
     private PessoaFisicaVM pessoaFisica;
     private PessoaJuridicaVM pessoaJuridica;
