@@ -2,10 +2,9 @@ package view;
 
 import Controller.ClienteController;
 import ViewModel.Cliente.CidadeVM;
+import ViewModel.Cliente.ClienteFactoryVM;
 import ViewModel.Cliente.EstadoVM;
 import ViewModel.Cliente.IClienteVM;
-import ViewModel.Cliente.PessoaFisicaVM;
-import ViewModel.Cliente.PessoaJuridicaVM;
 import ViewModel.Cliente.TipoDePessoa;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
@@ -20,27 +19,16 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private ClienteController clienteController;
     private IClienteVM cliente;
     private TipoDePessoa tipoDePessoa;
-
+    private ClienteFactoryVM clienteFactory;
+    
     public CadastroClienteView(ClienteController clienteController) {
         initComponents();
         this.clienteController = clienteController;
+        clienteFactory = new ClienteFactoryVM();
         limparCamposDaTela();
         carregarComboBoxUfComListaDeEstados();
         testeCadastro();
         getContentPane().setBackground(Color.white);
-    }
-
-    private void verificarSeEhPessoaFisicaOuJuridicaEAtribuirCPFOuCNPJ() {
-        if (rbnPessoaFisica.isSelected()) {
-            cliente = new PessoaFisicaVM();
-            ((PessoaFisicaVM) cliente).setCpf(txtCPF_CNPJ.getText());
-            tipoDePessoa = TipoDePessoa.PESSOA_FISICA;
-        }
-        if (rbnPessoaJuridica.isSelected()) {
-            cliente = new PessoaJuridicaVM();
-            ((PessoaJuridicaVM) cliente).setCnpj(txtCPF_CNPJ.getText());
-            tipoDePessoa = TipoDePessoa.PESSOA_JURIDICA;
-        }
     }
 
     private void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
@@ -58,7 +46,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }
 
     private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
-        verificarSeEhPessoaFisicaOuJuridicaEAtribuirCPFOuCNPJ();
+        cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
         cliente.getInformacoesGerais().setNome(txtNome.getText());
         recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
         recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
@@ -460,15 +448,16 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private void rbnPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaFisicaActionPerformed
         rbnPessoaJuridica.setSelected(false);
         setMascaraCPF();
+        tipoDePessoa = TipoDePessoa.FISICA;
     }//GEN-LAST:event_rbnPessoaFisicaActionPerformed
 
     private void rbnPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaJuridicaActionPerformed
         rbnPessoaFisica.setSelected(false);
         setMascaraCNPJ();
+        tipoDePessoa = TipoDePessoa.JURIDICA;
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
 
     private void setMascaraCNPJ() {
-
         try {
             MaskFormatter mascaraCNPJ = new MaskFormatter("###.###.###/####-##");
             txtCPF_CNPJ.setFormatterFactory(null);

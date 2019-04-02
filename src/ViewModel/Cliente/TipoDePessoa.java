@@ -3,6 +3,23 @@ package ViewModel.Cliente;
 
 public enum TipoDePessoa {
     
-    PESSOA_FISICA, PESSOA_JURIDICA;
-    
+   FISICA("Fisica"), 
+   JURIDICA("Juridica");
+
+  private String descricao;
+
+  TipoDePessoa(String descricao) {
+      this.descricao = descricao;
+  }
+
+  public String getDescricao() {
+      return descricao;
+  }
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
+   
+  
 }

@@ -3,6 +3,7 @@ package Controller;
 
 import DAL.PessoaFisicaDAO;
 import DAL.PessoaJuridicaDAO;
+import ViewModel.Cliente.ClienteFactoryVM;
 import ViewModel.Cliente.EstadoFactoryVM;
 import ViewModel.Cliente.EstadoVM;
 import ViewModel.Cliente.IClienteVM;
@@ -18,10 +19,12 @@ public class ClienteController {
     private PessoaFisicaDAO pessoaFisicaDAO;
     private PessoaJuridicaDAO pessoaJuridicaDAO;
     
+    
     public ClienteController(){
         estados = EstadoFactoryVM.TodosOsEstados();
         pessoaFisicaDAO = new PessoaFisicaDAO();
         pessoaJuridicaDAO = new PessoaJuridicaDAO();
+        
     }
     
     public List<EstadoVM> GetEstados()
@@ -34,7 +37,7 @@ public class ClienteController {
     
     public void salvarCliente(TipoDePessoa tipoDePessoa, IClienteVM cliente){
         
-        if(tipoDePessoa == TipoDePessoa.PESSOA_FISICA){
+        if(tipoDePessoa == TipoDePessoa.FISICA){
             
             pessoaFisicaDAO.criar((PessoaFisicaVM)cliente);
             
@@ -46,7 +49,7 @@ public class ClienteController {
     
     public IClienteVM lerCliente(TipoDePessoa tipoDePessoa, String cpf){
         
-        if(tipoDePessoa == TipoDePessoa.PESSOA_FISICA){
+        if(tipoDePessoa == TipoDePessoa.FISICA){
             
             PessoaFisicaVM pessoaFisica = pessoaFisicaDAO.lerPessoaFisicaByCPF(cpf);
             return pessoaFisica;
@@ -58,5 +61,7 @@ public class ClienteController {
         
         return null;
     }
+    
+    
            
 }
