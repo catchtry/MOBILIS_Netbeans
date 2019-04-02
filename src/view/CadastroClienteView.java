@@ -119,6 +119,8 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        CadastroClienteMenuView = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
         CadastroClienteView = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         rbnPessoaFisica = new javax.swing.JRadioButton();
@@ -150,19 +152,27 @@ public class CadastroClienteView extends javax.swing.JFrame {
         txtCelular = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
-        CadastroClienteMenuView = new javax.swing.JPanel();
-        btnApagar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnFiltrar = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnCadastro = new javax.swing.JButton();
-        lblCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        CadastroClienteView.setBackground(new java.awt.Color(255, 255, 255));
+        CadastroClienteMenuView.setBackground(new java.awt.Color(255, 255, 255));
+        CadastroClienteMenuView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
+
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home_48x48.png"))); // NOI18N
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnHome.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnHome.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+
+        CadastroClienteView.setBackground(new java.awt.Color(0, 44, 107));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
@@ -270,7 +280,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
                                 .addGap(130, 130, 130))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                                 .addComponent(lblNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -416,74 +426,28 @@ public class CadastroClienteView extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        CadastroClienteMenuView.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
-        btnApagar.setBorderPainted(false);
-        btnApagar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnApagar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnApagar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
-        btnEditar.setBorderPainted(false);
-        btnEditar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnEditar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnEditar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filter.png"))); // NOI18N
-        btnFiltrar.setBorderPainted(false);
-        btnFiltrar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnFiltrar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnFiltrar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
-        btnPesquisar.setBorderPainted(false);
-        btnPesquisar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        btnCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
-        btnCadastro.setBorderPainted(false);
-        btnCadastro.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnCadastro.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnCadastro.setPreferredSize(new java.awt.Dimension(50, 50));
-
-        lblCliente.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        lblCliente.setText("Cadastro");
 
         javax.swing.GroupLayout CadastroClienteMenuViewLayout = new javax.swing.GroupLayout(CadastroClienteMenuView);
         CadastroClienteMenuView.setLayout(CadastroClienteMenuViewLayout);
         CadastroClienteMenuViewLayout.setHorizontalGroup(
             CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroClienteMenuViewLayout.createSequentialGroup()
+            .addGroup(CadastroClienteMenuViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
-                .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CadastroClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroClienteMenuViewLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         CadastroClienteMenuViewLayout.setVerticalGroup(
             CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastroClienteMenuViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnApagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(CadastroClienteView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -492,18 +456,12 @@ public class CadastroClienteView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(CadastroClienteMenuView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(CadastroClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(CadastroClienteMenuView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CadastroClienteView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         pack();
@@ -533,6 +491,10 @@ public class CadastroClienteView extends javax.swing.JFrame {
         setMascaraCNPJ();
         tipoDePessoa = TipoDePessoa.JURIDICA;
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     private void setMascaraCNPJ() {
         try {
@@ -593,11 +555,7 @@ public class CadastroClienteView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroClienteMenuView;
     private javax.swing.JPanel CadastroClienteView;
-    private javax.swing.JButton btnApagar;
-    private javax.swing.JButton btnCadastro;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnFiltrar;
-    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbxCidade;
@@ -611,7 +569,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCep;
     private javax.swing.JLabel lblCidade;
-    private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblComplemento;
     private javax.swing.JLabel lblCpfCnpj;
     private javax.swing.JLabel lblEndereco;
