@@ -3,10 +3,9 @@ package view;
 
 import Controller.ClienteController;
 import ViewModel.Cliente.CidadeVM;
+import ViewModel.Cliente.ClienteFactoryVM;
 import ViewModel.Cliente.EstadoVM;
 import ViewModel.Cliente.IClienteVM;
-import ViewModel.Cliente.PessoaFisicaVM;
-import ViewModel.Cliente.PessoaJuridicaVM;
 import ViewModel.Cliente.TipoDePessoa;
 import java.awt.event.ItemEvent;
 import java.text.ParseException;
@@ -21,46 +20,45 @@ public class EditarClienteView extends javax.swing.JFrame {
     private ClienteController clienteController;
     private IClienteVM cliente;
     private TipoDePessoa tipoDePessoa;
+    private ClienteFactoryVM clienteFactory;
     
     public EditarClienteView(ClienteController clienteController) {
         initComponents();
         this.clienteController = clienteController;
-        limparCampos();
-        loadComboBoxUf(); 
-        testeCadastro();
-        
-        
+        limparCamposDaTela();
+        carregarComboBoxUfComListaDeEstados();
+        clienteFactory = new ClienteFactoryVM();
+    }
+    
+    private void carregarComboBoxUfComListaDeEstados() {
+        List<EstadoVM> estados;
+        estados = clienteController.GetEstados();
+        cbxUf.addItem("Selecione");
+        for (EstadoVM estado : estados) {
+            cbxUf.addItem(estado.getNome());
+        }
     }
 
-     private void verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ(){
-        /*if(rbnPessoaFisica.isSelected()){
-            cliente = new PessoaFisicaVM();
-            ((PessoaFisicaVM)cliente).setCpf(txtCPF_CNPJ.getText());
-            tipoDePessoa = TipoDePessoa.PESSOA_FISICA;
+    private void carregarComboBoxCidadeComListaDeCidades() {
+        if (cbxUf.getSelectedIndex() == 0) {
+            limparComboBoxCidadeEAdicionarOpcaoSelecione();
         }
-        
-        if(rbnPessoaJuridica.isSelected()){
-            cliente = new PessoaJuridicaVM();   
-            ((PessoaJuridicaVM)cliente).setCnpj(txtCPF_CNPJ.getText());
-            tipoDePessoa = TipoDePessoa.PESSOA_JURIDICA;
-        }*/
-    }
-     
-    private void recuperaInformacoesEAtribuiContato(){
-        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), txtCelular.getText(), txtEmail.getText());
+        if (cbxUf.getSelectedIndex() > 0) {
+            limparComboBoxCidadeEAdicionarOpcaoSelecione();
+            EstadoVM estadoSelecionado;
+            estadoSelecionado = clienteController.GetEstadoById(cbxUf.getSelectedIndex() - 1);
+            for (CidadeVM cidade : estadoSelecionado.getListaDeCidades()) {
+                cbxCidade.addItem(cidade.getNome());
+            }
+        }
     }
     
-    private void recuperaInformacoesEAtribuiEndereco(){
-       
-        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(), 
-                                                   Integer.parseInt(txtNumero.getText()), txtBairro.getText(), 
-                                                   cbxCidade.getSelectedItem().toString(),
-                                                   cbxUf.getSelectedItem().toString(),                                                  
-                                                   txtComplemento.getText());
+    private void limparComboBoxCidadeEAdicionarOpcaoSelecione() {
+        cbxCidade.removeAllItems();
+        cbxCidade.addItem("Selecione");
     }
-    
-    private void preencheCampos(IClienteVM cliente){
-        
+
+    private void preencherCamposDaTelaComOsDadosDoObjetoCliente(IClienteVM cliente){
         cbxCidade.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getCidade());
         cbxUf.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getUf());
         txtNome.setText(cliente.getInformacoesGerais().getNome());
@@ -71,26 +69,10 @@ public class EditarClienteView extends javax.swing.JFrame {
         txtComplemento.setText(cliente.getInformacoesGerais().getEndereco().getComplemento());
         txtTelefone.setText(cliente.getInformacoesGerais().getContato().getTelefone());
         txtCelular.setText(cliente.getInformacoesGerais().getContato().getCelular());
-        txtEmail.setText(cliente.getInformacoesGerais().getContato().getEmail());
-                
+        txtEmail.setText(cliente.getInformacoesGerais().getContato().getEmail());         
     }
     
-    private void recuperaInformacoesDaTelaEPreencheObjetoCliente(){
-        
-        verificaSeEhPessoaFisicaOuJuridicaEAtribuiCPFOuCNPJ();
-        
-        cliente.getInformacoesGerais().setNome(txtNome.getText());
-        
-        recuperaInformacoesEAtribuiEndereco();
-        
-        recuperaInformacoesEAtribuiContato();
-        
-        
-         
-    }
-    
-    private void limparCampos(){
-        
+    private void limparCamposDaTela(){
         rbnPessoaFisica.setSelected(false);
         rbnPessoaJuridica.setSelected(false);
         txtCPF_CNPJ.setText("");
@@ -107,57 +89,7 @@ public class EditarClienteView extends javax.swing.JFrame {
         txtEmail.setText("");
                 
     }
-    
-    private void testeCadastro(){
-        //rbnPessoaFisica.setSelected(true);
-        rbnPessoaJuridica.setSelected(false);
-        txtCPF_CNPJ.setText("123.456.789-10");
-        cbxUf.setSelectedIndex(1);
-        cbxCidade.setSelectedIndex(1);
-        txtNome.setText("Laís");
-        txtCep.setText("13183-761");
-        txtLogradouro.setText("Rua dos Melros");
-        txtNumero.setText("83");
-        txtBairro.setText("Chácara Recreio Alvorada");
-        txtComplemento.setText("IFSP");
-        txtTelefone.setText("(19) 2222-9637");
-        txtCelular.setText("(19) 99851-7455");
-        txtEmail.setText("laisjkl@hotmail.com");
-    }
-    
-    private void loadComboBoxUf(){
-        
-        List<EstadoVM> estados;
-        estados = clienteController.GetEstados();
-        cbxUf.addItem("Selecione");
-        
-        for(EstadoVM estado : estados) {
-            cbxUf.addItem(estado.getNome());
-        }
-    }
-    
-private void loadComboBoxCidade(){
-        
-        if(cbxUf.getSelectedIndex() == 0){
-            limpaComboBoxEAdicionaOpcaoSelecione();
-        }
-        
-        if(cbxUf.getSelectedIndex() > 0){
-            limpaComboBoxEAdicionaOpcaoSelecione();
-            EstadoVM estadoSelecionado;
-            estadoSelecionado = clienteController.GetEstadoById(cbxUf.getSelectedIndex() - 1);
-            
-        for(CidadeVM cidade : estadoSelecionado.getListaDeCidades()){
-            cbxCidade.addItem(cidade.getNome());
-        }
-    }
-}
-    
-private void limpaComboBoxEAdicionaOpcaoSelecione(){
-    cbxCidade.removeAllItems();
-    cbxCidade.addItem("Selecione");
-}
-    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -258,6 +190,9 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         btnPesquisar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisar1ActionPerformed(evt);
+        cbxUf.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxUfItemStateChanged(evt);
             }
         });
 
@@ -309,6 +244,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
         jPanel2.setPreferredSize(new java.awt.Dimension(758, 210));
+        lblNome.setText("Nome / Razão :");
 
         lblEndereco.setText("Logradouro:");
 
@@ -500,29 +436,40 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
                 .addGap(49, 49, 49))
         );
 
-        javax.swing.GroupLayout CadastroClienteViewLayout = new javax.swing.GroupLayout(CadastroClienteView);
-        CadastroClienteView.setLayout(CadastroClienteViewLayout);
-        CadastroClienteViewLayout.setHorizontalGroup(
-            CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CadastroClienteViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        CadastroClienteViewLayout.setVerticalGroup(
-            CadastroClienteViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CadastroClienteViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        CadastroClienteMenuView.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
+        btnApagar.setBorderPainted(false);
+        btnApagar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnApagar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnApagar.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
+        btnEditar.setBorderPainted(false);
+        btnEditar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnEditar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnEditar.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filter.png"))); // NOI18N
+        btnFiltrar.setBorderPainted(false);
+        btnFiltrar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnFiltrar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnFiltrar.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
+        btnPesquisar.setBorderPainted(false);
+        btnPesquisar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        btnCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        btnCadastro.setBorderPainted(false);
+        btnCadastro.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnCadastro.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnCadastro.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        lblCliente.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        lblCliente.setText("Atualizar Cadastro Cliente");
 
         javax.swing.GroupLayout CadastroClienteMenuViewLayout = new javax.swing.GroupLayout(CadastroClienteMenuView);
         CadastroClienteMenuView.setLayout(CadastroClienteMenuViewLayout);
@@ -530,11 +477,17 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
             CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastroClienteMenuViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroClienteMenuViewLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CadastroClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         CadastroClienteMenuViewLayout.setVerticalGroup(
@@ -561,36 +514,21 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxUfActionPerformed
-
-    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        recuperaInformacoesDaTelaEPreencheObjetoCliente();
-        limparCampos();
-        clienteController.salvarCliente(tipoDePessoa, cliente);
+        limparCamposDaTela();
+        clienteController.atualizarCliente(tipoDePessoa, cliente);
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
-        int state = evt.getStateChange();
-        if(state == ItemEvent.SELECTED){
-  
-           loadComboBoxCidade();
-        }
-    }//GEN-LAST:event_cbxUfItemStateChanged
 
     private void rbnPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaFisicaActionPerformed
         rbnPessoaJuridica.setSelected(false);
         setMascaraCPF();
+        tipoDePessoa = TipoDePessoa.FISICA;
     }//GEN-LAST:event_rbnPessoaFisicaActionPerformed
 
     private void rbnPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaJuridicaActionPerformed
         rbnPessoaFisica.setSelected(false);
         setMascaraCNPJ();
+        tipoDePessoa = TipoDePessoa.JURIDICA;
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -602,7 +540,7 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
 
     private void btnPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisar1ActionPerformed
         cliente = clienteController.lerCliente(tipoDePessoa, txtCPF_CNPJ.getText());
-        preencheCampos(cliente);
+        preencherCamposDaTelaComOsDadosDoObjetoCliente(cliente);
     }//GEN-LAST:event_btnPesquisar1ActionPerformed
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
@@ -611,6 +549,13 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
 
     private void setMascaraCNPJ(){
         
+    private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            carregarComboBoxCidadeComListaDeCidades();
+        }
+    }//GEN-LAST:event_cbxUfItemStateChanged
+
+    private void setMascaraCNPJ(){  
         try {
             MaskFormatter mascaraCNPJ = new MaskFormatter("###.###.###/####-##");
             
@@ -622,7 +567,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     }
     
     private void setMascaraCPF(){
-        
         try {
             MaskFormatter mascaraCPF = new MaskFormatter("###.###.###-##");
             

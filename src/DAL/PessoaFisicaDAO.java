@@ -84,6 +84,7 @@ public class PessoaFisicaDAO {
 
         PessoaFisicaVM pessoaf = new PessoaFisicaVM(cpf);
 
+        
         try {
             stm = con.prepareStatement("SELECT * FROM pessoafisica WHERE cpf = ?");
             stm.setString(1, pessoaf.getCpf());
@@ -113,7 +114,7 @@ public class PessoaFisicaDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("UPDATE SET pessoafisica cpf = ?, nome = ?, logradouro = ?, cep = ?, numero = ?, bairro = ?, cidade = ?, uf = ?, complemento = ?, telefone = ?, email = ?, celular =?) WHERE cpf = ?");
+            stm = con.prepareStatement("UPDATE pessoafisica SET cpf = ?, nome = ?, logradouro = ?, cep = ?, numero = ?, bairro = ?, cidade = ?, uf = ?, complemento = ?, telefone = ?, email = ?, celular =? WHERE cpf = ?");
             stm.setString(1, pf.getCpf());
             stm.setString(2, pf.getInformacoesGerais().getNome());
             stm.setString(3, pf.getInformacoesGerais().getEndereco().getLogradouro());
@@ -126,7 +127,7 @@ public class PessoaFisicaDAO {
             stm.setString(10, pf.getInformacoesGerais().getContato().getTelefone());
             stm.setString(11, pf.getInformacoesGerais().getContato().getEmail());
             stm.setString(12, pf.getInformacoesGerais().getContato().getCelular());
-
+            stm.setString(13, pf.getCpf());
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
         } catch (SQLException ex) {
