@@ -164,7 +164,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         CadastroClienteMenuView = new javax.swing.JPanel();
-        btnHome = new javax.swing.JButton();
         CadastroClienteView = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         rbnPessoaFisica = new javax.swing.JRadioButton();
@@ -210,20 +209,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         CadastroClienteMenuView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
         CadastroClienteMenuView.setMinimumSize(new java.awt.Dimension(868, 758));
         CadastroClienteMenuView.setPreferredSize(new java.awt.Dimension(868, 758));
-
-        btnHome.setBackground(new java.awt.Color(255, 255, 255));
-        btnHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home_48x48.png"))); // NOI18N
-        btnHome.setBorderPainted(false);
-        btnHome.setContentAreaFilled(false);
-        btnHome.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnHome.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnHome.setPreferredSize(new java.awt.Dimension(50, 50));
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
 
         CadastroClienteView.setBackground(new java.awt.Color(0, 44, 107));
 
@@ -530,18 +515,13 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
             CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastroClienteMenuViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroClienteMenuViewLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CadastroClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(CadastroClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         CadastroClienteMenuViewLayout.setVerticalGroup(
             CadastroClienteMenuViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastroClienteMenuViewLayout.createSequentialGroup()
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(68, 68, 68)
                 .addComponent(CadastroClienteView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -592,13 +572,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
         rbnPessoaFisica.setSelected(false);
         setMascaraCNPJ();
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
-
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
-        MainView mainview = new MainView();
-        mainview.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnPesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisar1ActionPerformed
         cliente = clienteController.lerCliente(tipoDePessoa, txtCPF_CNPJ.getText());
@@ -675,7 +648,6 @@ private void limpaComboBoxEAdicionaOpcaoSelecione(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroClienteMenuView;
     private javax.swing.JPanel CadastroClienteView;
-    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPesquisar1;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvar1;
