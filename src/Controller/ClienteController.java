@@ -18,13 +18,13 @@ public class ClienteController {
     private List<EstadoVM> estados;
     private PessoaFisicaDAO pessoaFisicaDAO;
     private PessoaJuridicaDAO pessoaJuridicaDAO;
-    
+    private ClienteFactoryVM clienteFactory;
     
     public ClienteController(){
         estados = EstadoFactoryVM.TodosOsEstados();
         pessoaFisicaDAO = new PessoaFisicaDAO();
         pessoaJuridicaDAO = new PessoaJuridicaDAO();
-        
+        clienteFactory = new ClienteFactoryVM();
     }
     
     public List<EstadoVM> GetEstados()
@@ -38,30 +38,34 @@ public class ClienteController {
     public void salvarCliente(TipoDePessoa tipoDePessoa, IClienteVM cliente){
         
         if(tipoDePessoa == TipoDePessoa.FISICA){
-            
             pessoaFisicaDAO.criar((PessoaFisicaVM)cliente);
-            
-        }else{
-            
+        }
+        if(tipoDePessoa == TipoDePessoa.JURIDICA){
             pessoaJuridicaDAO.criar((PessoaJuridicaVM)cliente);
         }
     }
     
-    public IClienteVM lerCliente(TipoDePessoa tipoDePessoa, String cpf){
+    public IClienteVM lerCliente(TipoDePessoa tipoDePessoa, String cpf_cnpj){
         
         if(tipoDePessoa == TipoDePessoa.FISICA){
-            
-            PessoaFisicaVM pessoaFisica = pessoaFisicaDAO.lerPessoaFisicaByCPF(cpf);
-            return pessoaFisica;
-        }else{
-           
-            //PessoaJuridicaVM pessoaJuridica = pessoaJuridicaDAO.lerPessoaJuridicaByCNPJ();
-            //return pessoaJuridica;
+            return pessoaFisicaDAO.lerPessoaFisicaByCPF(cpf_cnpj);
+        }
+        if(tipoDePessoa == TipoDePessoa.JURIDICA){
+            return pessoaJuridicaDAO.lerPessoaJuridicaByCNPJ(cpf_cnpj);
         }
         
         return null;
     }
     
     
-           
+    public void atualizarCliente(TipoDePessoa tipoDePessoa,IClienteVM cliente){
+        if(tipoDePessoa == TipoDePessoa.FISICA){
+            pessoaFisicaDAO.atualizar((PessoaFisicaVM)cliente);
+        }
+        if(tipoDePessoa == TipoDePessoa.JURIDICA){
+            pessoaJuridicaDAO.atualizar((PessoaJuridicaVM)cliente);
+        }
+    }
+    
+    
 }
