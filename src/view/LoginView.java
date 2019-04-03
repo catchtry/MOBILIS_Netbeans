@@ -113,7 +113,7 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         if(txtLogin.getText().equals("root")&&txtPassword.getText().equals("root")){
-            main3 main = new main3(); // Cria novo objeto do tipo JFrame
+            MainView main = new MainView(); // Cria novo objeto do tipo JFrame
             main.setVisible(true);  // Torna o JFrame visivel
             this.dispose();  // Fecha o JFrame anterior
         }else{
