@@ -53,9 +53,8 @@ public class PessoaJuridicaDAO {
             rs = stm.executeQuery();
             while (rs.next()) {
 
-                PessoaJuridicaVM pessoaj = new PessoaJuridicaVM();
+                PessoaJuridicaVM pessoaj = new PessoaJuridicaVM(rs.getString("cnpj"));
 
-                pessoaj.setCnpj(rs.getString("cnpj"));
                 pessoaj.getInformacoesGerais().setNome(rs.getString("nome"));
                 pessoaj.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
                                                            rs.getInt("numero"), rs.getString("bairro"),
@@ -120,5 +119,36 @@ public class PessoaJuridicaDAO {
                 ConexaoBanco.closeConnection(con, stm);
             }
         
+    }
+    
+       public PessoaJuridicaVM lerPessoaJuridicaByCNPJ(String cnpj){
+        Connection con = ConexaoBanco.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        PessoaJuridicaVM pessoaf = new PessoaJuridicaVM(cnpj);
+        
+        try {
+            stm = con.prepareStatement("SELECT * FROM pessoajuridica WHERE cnpj = ?");
+            stm.setString(1, pessoaf.getCnpj());
+            rs = stm.executeQuery();
+            while (rs.next()) {
+
+                pessoaf.setCnpj(rs.getString("cnpj"));
+                pessoaf.getInformacoesGerais().setNome(rs.getString("nome"));
+                pessoaf.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
+                                                           rs.getInt("numero"), rs.getString("bairro"),
+                                                           rs.getString("uf"),rs.getString("cidade"),
+                                                           rs.getString("complemento"));
+           
+                pessoaf.getInformacoesGerais().setContato(rs.getString("telefone"), rs.getString("celular"),
+                                                          rs.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConexaoBanco.closeConnection(con, stm, rs);
+        }
+        return pessoaf;
     }
 }
