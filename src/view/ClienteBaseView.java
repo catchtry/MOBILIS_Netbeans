@@ -7,6 +7,7 @@ import ViewModel.Cliente.ClienteFactoryVM;
 import ViewModel.Cliente.EstadoVM;
 import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.TipoDePessoa;
+import java.awt.Container;
 import java.awt.event.ItemEvent;
 import java.text.ParseException;
 import java.util.List;
@@ -14,22 +15,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.MaskFormatter;
 
-public class EditarClienteView3 extends javax.swing.JFrame {
+public abstract class ClienteBaseView extends javax.swing.JFrame {
     
-    private ClienteController clienteController;
-    private IClienteVM cliente;
-    private TipoDePessoa tipoDePessoa;
-    private ClienteFactoryVM clienteFactory;
+    protected ClienteController clienteController;
+    protected IClienteVM cliente;
+    protected TipoDePessoa tipoDePessoa;
+    protected ClienteFactoryVM clienteFactory;
  
-    public EditarClienteView3(ClienteController clienteController,ClienteFactoryVM clienteFactory) {
-        initComponents();
-        this.clienteController = clienteController;
-        limparCamposDaTela();
-        carregarComboBoxUfComListaDeEstados();
-        this.clienteFactory = clienteFactory;
+    public ClienteBaseView() {
+      initComponents();
     }
-
-    private void carregarComboBoxUfComListaDeEstados() {
+    
+    protected Container retornaContentPane(){
+        return this.getContentPane();
+    }
+    protected void carregarComboBoxUfComListaDeEstados() {
         List<EstadoVM> estados;
         estados = clienteController.GetEstados();
         cbxUf.addItem("Selecione");
@@ -38,7 +38,7 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         }
     }
     
-    private void carregarComboBoxCidadeComListaDeCidades() {
+    protected void carregarComboBoxCidadeComListaDeCidades() {
         if (cbxUf.getSelectedIndex() == 0) {
             limparComboBoxCidadeEAdicionarOpcaoSelecione();
         }
@@ -52,12 +52,12 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         }
     }
     
-    private void limparComboBoxCidadeEAdicionarOpcaoSelecione() {
+    protected void limparComboBoxCidadeEAdicionarOpcaoSelecione() {
         cbxCidade.removeAllItems();
         cbxCidade.addItem("Selecione");
     }
     
-    private void preencherCamposDaTelaComOsDadosDoObjetoCliente(IClienteVM cliente){
+    protected void preencherCamposDaTelaComOsDadosDoObjetoCliente(IClienteVM cliente){
         cbxCidade.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getCidade());
         cbxUf.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getUf());
         txtNome.setText(cliente.getInformacoesGerais().getNome());
@@ -71,7 +71,7 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         txtEmail.setText(cliente.getInformacoesGerais().getContato().getEmail());         
     }
     
-    private void limparCamposDaTela(){
+    protected void limparCamposDaTela(){
         rbnPessoaFisica.setSelected(false);
         rbnPessoaJuridica.setSelected(false);
         txtCPF_CNPJ.setText("");
@@ -89,7 +89,7 @@ public class EditarClienteView3 extends javax.swing.JFrame {
                 
     }
     
-    private void setMascaraCNPJ(){  
+    protected void setMascaraCNPJ(){  
         try {
             MaskFormatter mascaraCNPJ = new MaskFormatter("###.###.###/####-##");
             
@@ -100,7 +100,7 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         }
     }
     
-    private void setMascaraCPF(){
+    protected void setMascaraCPF(){
         try {
             MaskFormatter mascaraCPF = new MaskFormatter("###.###.###-##");
             
@@ -111,35 +111,34 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         }
     }
  
-    private void recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(java.awt.event.ItemEvent evt){
+    protected void recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(java.awt.event.ItemEvent evt){
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             carregarComboBoxCidadeComListaDeCidades();
         }
     }
     
-    private void acaoRadioButtonPessoaFisica(){
+    protected void acaoRadioButtonPessoaFisica(){
         rbnPessoaJuridica.setSelected(false);
         setMascaraCPF();
         tipoDePessoa = TipoDePessoa.FISICA;
     }
     
-    private void acaoRadioButtonPessoaJuridica(){
+    protected void acaoRadioButtonPessoaJuridica(){
         rbnPessoaFisica.setSelected(false);
         setMascaraCNPJ();
         tipoDePessoa = TipoDePessoa.JURIDICA;
     }
     
-    private void acaoBotaoHome(){
+    protected void acaoBotaoHome(){
         MainView mainview = new MainView();
         mainview.setVisible(true);
         this.dispose();
     }
     
-    private void acaoBotaoPesquisar(){
+    protected void acaoBotaoPesquisar(){
         cliente = clienteController.lerCliente(tipoDePessoa, txtCPF_CNPJ.getText());
         preencherCamposDaTelaComOsDadosDoObjetoCliente(cliente);
     }
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,13 +180,11 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(868, 760));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Edição Cadastro do Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(0, 44, 107))); // NOI18N
-        jPanel1.setMaximumSize(new java.awt.Dimension(868, 750));
-        jPanel1.setPreferredSize(new java.awt.Dimension(868, 760));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(0, 44, 107))); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(868, 690));
 
         jPanel2.setBackground(new java.awt.Color(0, 44, 107));
 
@@ -198,20 +195,10 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         rbnPessoaFisica.setBackground(new java.awt.Color(255, 255, 255));
         rbnPessoaFisica.setForeground(new java.awt.Color(0, 44, 107));
         rbnPessoaFisica.setText("Pessoa Física");
-        rbnPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbnPessoaFisicaActionPerformed(evt);
-            }
-        });
 
         rbnPessoaJuridica.setBackground(new java.awt.Color(255, 255, 255));
         rbnPessoaJuridica.setForeground(new java.awt.Color(0, 44, 107));
         rbnPessoaJuridica.setText("Pessoa Jurídica");
-        rbnPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbnPessoaJuridicaActionPerformed(evt);
-            }
-        });
 
         lblCpfCnpj.setForeground(new java.awt.Color(0, 44, 107));
         lblCpfCnpj.setText("CPF / CNPJ : ");
@@ -225,11 +212,6 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         btnPesquisar.setMaximumSize(new java.awt.Dimension(50, 50));
         btnPesquisar.setMinimumSize(new java.awt.Dimension(50, 50));
         btnPesquisar.setPreferredSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -264,7 +246,7 @@ public class EditarClienteView3 extends javax.swing.JFrame {
                         .addComponent(lblCpfCnpj)
                         .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNome))
@@ -302,12 +284,6 @@ public class EditarClienteView3 extends javax.swing.JFrame {
 
         lblCidade2.setForeground(new java.awt.Color(0, 44, 107));
         lblCidade2.setText("Cidade :");
-
-        cbxUf.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxUfItemStateChanged(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -350,25 +326,25 @@ public class EditarClienteView3 extends javax.swing.JFrame {
                     .addComponent(txtLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNumero2))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBairro2)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblComplemento2)
                     .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCep2)
                     .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUF2))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCidade2))
-                .addGap(20, 20, 20))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
@@ -393,18 +369,8 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         jLabel6.setText("E-mail :");
 
         btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
 
         btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -425,13 +391,14 @@ public class EditarClienteView3 extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -446,14 +413,14 @@ public class EditarClienteView3 extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCancelar)
-                        .addComponent(btnSalvar))
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -476,13 +443,13 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home_48x48.png"))); // NOI18N
@@ -504,7 +471,7 @@ public class EditarClienteView3 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -513,10 +480,9 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -526,45 +492,44 @@ public class EditarClienteView3 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 975, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
+    protected void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
+        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), 
+                                                   txtCelular.getText(), 
+                                                   txtEmail.getText());
+    }
 
-    private void rbnPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaFisicaActionPerformed
-        acaoRadioButtonPessoaFisica();
-    }//GEN-LAST:event_rbnPessoaFisicaActionPerformed
+    protected void recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente() {
+        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(),
+                                                   Integer.parseInt(txtNumero.getText()), txtBairro.getText(),
+                                                   cbxCidade.getSelectedItem().toString(),
+                                                   cbxUf.getSelectedItem().toString(),
+                                                   txtComplemento.getText());
+    }
 
-    private void rbnPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaJuridicaActionPerformed
-        acaoRadioButtonPessoaJuridica();
-    }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
-
-    private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
-        recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(evt);
-    }//GEN-LAST:event_cbxUfItemStateChanged
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        limparCamposDaTela();
-        clienteController.atualizarCliente(tipoDePessoa, cliente);
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
+    protected void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
+        cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
+        cliente.getInformacoesGerais().setNome(txtNome.getText());
+        recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
+        recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
+    }
+    
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-       acaoBotaoHome();
+        // TODO add your handling code here:
+        MainView mainview = new MainView();
+        mainview.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
-
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        acaoBotaoPesquisar();
-    }//GEN-LAST:event_btnPesquisarActionPerformed
 
   
     public static void main(String args[]) {
@@ -581,14 +546,18 @@ public class EditarClienteView3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditarClienteView3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteBaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditarClienteView3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteBaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditarClienteView3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteBaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarClienteView3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteBaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -597,7 +566,7 @@ public class EditarClienteView3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               
+                
             }
         });
     }

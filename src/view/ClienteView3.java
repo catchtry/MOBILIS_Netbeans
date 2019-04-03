@@ -1,46 +1,46 @@
 
 package view;
 
+import Controller.ClienteController;
+import ViewModel.Cliente.ClienteFactoryVM;
+
 
 public class ClienteView3 extends javax.swing.JFrame {
 
+    ClienteController clienteController = new ClienteController();
+    ClienteFactoryVM clienteFactory = new ClienteFactoryVM();
+    
     public ClienteView3() {
         initComponents();
     }
 
+    private void acaoBotaoHome(){
+        MainView mainview = new MainView();
+        mainview.setVisible(true);
+        this.dispose();
+    }
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnConfig = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         ClienteMenu = new javax.swing.JPanel();
         btnApagarCliente = new javax.swing.JButton();
         btnEditarrCliente = new javax.swing.JButton();
         btnAdicionarCliente = new javax.swing.JButton();
         btnPesquisarCliente = new javax.swing.JButton();
+        btnHome1 = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(868, 690));
+        setPreferredSize(new java.awt.Dimension(868, 750));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(0, 44, 107))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(868, 690));
-
-        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home_1.png"))); // NOI18N
-        btnConfig.setBorderPainted(false);
-        btnConfig.setContentAreaFilled(false);
-        btnConfig.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnConfig.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnConfig.setPreferredSize(new java.awt.Dimension(50, 50));
-        btnConfig.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfigActionPerformed(evt);
-            }
-        });
 
         jPanel2.setBackground(new java.awt.Color(0, 44, 107));
 
@@ -89,7 +89,7 @@ public class ClienteView3 extends javax.swing.JFrame {
         ClienteMenu.setLayout(ClienteMenuLayout);
         ClienteMenuLayout.setHorizontalGroup(
             ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienteMenuLayout.createSequentialGroup()
+            .addGroup(ClienteMenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEditarrCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -103,7 +103,7 @@ public class ClienteView3 extends javax.swing.JFrame {
         ClienteMenuLayout.setVerticalGroup(
             ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienteMenuLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
+                .addContainerGap(155, Short.MAX_VALUE)
                 .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,31 +127,55 @@ public class ClienteView3 extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ClienteMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                .addComponent(ClienteMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        btnHome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home_48x48.png"))); // NOI18N
+        btnHome1.setBorderPainted(false);
+        btnHome1.setContentAreaFilled(false);
+        btnHome1.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnHome1.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnHome1.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnHome1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHome1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(780, Short.MAX_VALUE)
-                .addComponent(btnConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 780, Short.MAX_VALUE)
+                        .addComponent(btnHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btnConfig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home_48x48.png"))); // NOI18N
+        btnHome.setBorderPainted(false);
+        btnHome.setContentAreaFilled(false);
+        btnHome.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnHome.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnHome.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,33 +184,46 @@ public class ClienteView3 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 975, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(893, 893, 893)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(894, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(350, 350, 350)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(350, Short.MAX_VALUE)))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-        new main3().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnConfigActionPerformed
-
     private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
 
-        CadastroClienteView3 cliente = new CadastroClienteView3(); // Cria novo objeto do tipo JFrame
-        cliente.setVisible(true);  // Torna o JFrame visivel
+        CadastroClienteView3 cadastroCliente = new CadastroClienteView3(clienteController,clienteFactory); // Cria novo objeto do tipo JFrame
+        cadastroCliente.setVisible(true);  // Torna o JFrame visivel
         this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_btnAdicionarClienteActionPerformed
 
     private void btnEditarrClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarrClienteActionPerformed
-        EditarClienteView3 cliente = new EditarClienteView3(); // Cria novo objeto do tipo JFrame
-        cliente.setVisible(true);  // Torna o JFrame visivel
+        EditarClienteView3 edicaoCadastroCliente = new EditarClienteView3(clienteController,clienteFactory); // Cria novo objeto do tipo JFrame
+        edicaoCadastroCliente.setVisible(true);  // Torna o JFrame visivel
         this.dispose();
     }//GEN-LAST:event_btnEditarrClienteActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHome1ActionPerformed
+        acaoBotaoHome();
+    }//GEN-LAST:event_btnHome1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -225,8 +262,9 @@ public class ClienteView3 extends javax.swing.JFrame {
     private javax.swing.JPanel ClienteMenu;
     private javax.swing.JButton btnAdicionarCliente;
     private javax.swing.JButton btnApagarCliente;
-    private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnEditarrCliente;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnHome1;
     private javax.swing.JButton btnPesquisarCliente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
