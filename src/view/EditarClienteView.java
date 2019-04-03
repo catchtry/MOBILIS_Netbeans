@@ -58,8 +58,9 @@ public class EditarClienteView extends javax.swing.JFrame {
     }
     
     private void preencherCamposDaTelaComOsDadosDoObjetoCliente(IClienteVM cliente){
-        cbxCidade.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getCidade());
+        
         cbxUf.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getUf());
+        
         txtNome.setText(cliente.getInformacoesGerais().getNome());
         txtCep.setText(cliente.getInformacoesGerais().getEndereco().getCep());
         txtLogradouro.setText(cliente.getInformacoesGerais().getEndereco().getLogradouro());
@@ -68,7 +69,8 @@ public class EditarClienteView extends javax.swing.JFrame {
         txtComplemento.setText(cliente.getInformacoesGerais().getEndereco().getComplemento());
         txtTelefone.setText(cliente.getInformacoesGerais().getContato().getTelefone());
         txtCelular.setText(cliente.getInformacoesGerais().getContato().getCelular());
-        txtEmail.setText(cliente.getInformacoesGerais().getContato().getEmail());         
+        txtEmail.setText(cliente.getInformacoesGerais().getContato().getEmail());  
+        cbxCidade.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getCidade());
     }
     
     private void limparCamposDaTela(){
@@ -138,6 +140,27 @@ public class EditarClienteView extends javax.swing.JFrame {
     private void acaoBotaoPesquisar(){
         cliente = clienteController.lerCliente(tipoDePessoa, txtCPF_CNPJ.getText());
         preencherCamposDaTelaComOsDadosDoObjetoCliente(cliente);
+    }
+    
+    private void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
+        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), 
+                                                   txtCelular.getText(), 
+                                                   txtEmail.getText());
+    }
+
+    private void recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente() {
+        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(),
+                                                   Integer.parseInt(txtNumero.getText()), txtBairro.getText(),
+                                                   cbxCidade.getSelectedItem().toString(),
+                                                   cbxUf.getSelectedItem().toString(),
+                                                   txtComplemento.getText());
+    }
+
+    private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
+        cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
+        cliente.getInformacoesGerais().setNome(txtNome.getText());
+        recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
+        recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
     }
  
     @SuppressWarnings("unchecked")
@@ -545,15 +568,14 @@ public class EditarClienteView extends javax.swing.JFrame {
         acaoRadioButtonPessoaJuridica();
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
 
-    private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
-        recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(evt);
-    }//GEN-LAST:event_cbxUfItemStateChanged
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+        ClienteView clienteView = new ClienteView();
+        clienteView.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        recuperarInformacoesDaTelaEPreencherObjetoCliente();
         limparCamposDaTela();
         clienteController.atualizarCliente(tipoDePessoa, cliente);
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -565,6 +587,10 @@ public class EditarClienteView extends javax.swing.JFrame {
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         acaoBotaoPesquisar();
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void cbxUfItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUfItemStateChanged
+        recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(evt);
+    }//GEN-LAST:event_cbxUfItemStateChanged
 
   
     public static void main(String args[]) {

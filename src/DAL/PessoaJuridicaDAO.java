@@ -58,7 +58,7 @@ public class PessoaJuridicaDAO {
                 pessoaj.getInformacoesGerais().setNome(rs.getString("nome"));
                 pessoaj.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
                                                            rs.getInt("numero"), rs.getString("bairro"),
-                                                           rs.getString("uf"),rs.getString("cidade"),
+                                                           rs.getString("cidade"),rs.getString("uf"),
                                                            rs.getString("complemento"));
            
                 pessoaj.getInformacoesGerais().setContato(rs.getString("telefone"), rs.getString("celular"),
@@ -80,7 +80,7 @@ public class PessoaJuridicaDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("UPDATE SET pessoajuridica cnpj = ?, nome = ?, logradouro = ?, cep = ?, numero = ?, bairro = ?, cidade = ?, uf = ?, complemento = ?, telefone = ?, email = ?, celular =?) WHERE cnpj = ?");
+            stm = con.prepareStatement("UPDATE pessoajuridica SET cnpj = ?, nome = ?, logradouro = ?, cep = ?, numero = ?, bairro = ?, cidade = ?, uf = ?, complemento = ?, telefone = ?, email = ?, celular =? WHERE cnpj = ?");
             stm.setString(1, pj.getCnpj());
             stm.setString(2, pj.getInformacoesGerais().getNome());
             stm.setString(3, pj.getInformacoesGerais().getEndereco().getLogradouro());
@@ -93,6 +93,7 @@ public class PessoaJuridicaDAO {
             stm.setString(10, pj.getInformacoesGerais().getContato().getTelefone());
             stm.setString(11, pj.getInformacoesGerais().getContato().getEmail());
             stm.setString(12, pj.getInformacoesGerais().getContato().getCelular());
+            stm.setString(13, pj.getCnpj());
 
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
@@ -138,7 +139,7 @@ public class PessoaJuridicaDAO {
                 pessoaf.getInformacoesGerais().setNome(rs.getString("nome"));
                 pessoaf.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
                                                            rs.getInt("numero"), rs.getString("bairro"),
-                                                           rs.getString("uf"),rs.getString("cidade"),
+                                                           rs.getString("cidade"),rs.getString("uf"),
                                                            rs.getString("complemento"));
            
                 pessoaf.getInformacoesGerais().setContato(rs.getString("telefone"), rs.getString("celular"),

@@ -93,7 +93,7 @@ public class PessoaFisicaDAO {
                 pessoaf.getInformacoesGerais().setNome(rs.getString("nome"));
                 pessoaf.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
                                                            rs.getInt("numero"), rs.getString("bairro"),
-                                                           rs.getString("uf"),rs.getString("cidade"),
+                                                           rs.getString("cidade"),rs.getString("uf"),
                                                            rs.getString("complemento"));
            
                 pessoaf.getInformacoesGerais().setContato(rs.getString("telefone"), rs.getString("celular"),

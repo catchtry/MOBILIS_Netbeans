@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 public class CadastroClienteView extends javax.swing.JFrame {
@@ -28,7 +29,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
         this.clienteFactory = clienteFactory;
         limparCamposDaTela();
         carregarComboBoxUfComListaDeEstados();
-        testeCadastro();
         getContentPane().setBackground(Color.white);
     }
     
@@ -57,24 +57,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
         for (EstadoVM estado : estados) {
             cbxUf.addItem(estado.getNome());
         }
-    }
-    
-    private void testeCadastro() {
-        int teste = cbxUf.getItemCount();
-        rbnPessoaFisica.setSelected(true);
-        rbnPessoaJuridica.setSelected(false);
-        txtCPF_CNPJ.setText("123.456.789-10");
-        cbxUf.setSelectedIndex(1);
-        cbxCidade.setSelectedIndex(1);
-        txtNome.setText("Laís");
-        txtCep.setText("13183-761");
-        txtLogradouro.setText("Rua dos Melros");
-        txtNumero.setText("83");
-        txtBairro.setText("Chácara Recreio Alvorada");
-        txtComplemento.setText("IFSP");
-        txtTelefone.setText("(19) 2222-9637");
-        txtCelular.setText("(19) 99851-7455");
-        txtEmail.setText("laisjkl@hotmail.com");
     }
     
      private void carregarComboBoxCidadeComListaDeCidades() {
@@ -157,7 +139,10 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }
 
     private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
+        
         cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
+        
+        
         cliente.getInformacoesGerais().setNome(txtNome.getText());
         recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
         recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
@@ -545,7 +530,9 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxUfItemStateChanged
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+        ClienteView clienteView = new ClienteView();
+        clienteView.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
