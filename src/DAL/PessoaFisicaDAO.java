@@ -55,9 +55,8 @@ public class PessoaFisicaDAO {
             rs = stm.executeQuery();
             while (rs.next()) {
 
-                PessoaFisicaVM pessoaf = new PessoaFisicaVM();
+                PessoaFisicaVM pessoaf = new PessoaFisicaVM(rs.getString("cpf"));
 
-                pessoaf.setCpf(rs.getString("cpf"));
                 pessoaf.getInformacoesGerais().setNome(rs.getString("nome"));
                 pessoaf.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
                                                            rs.getInt("numero"), rs.getString("bairro"),
@@ -83,8 +82,8 @@ public class PessoaFisicaDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
 
-        PessoaFisicaVM pessoaf = new PessoaFisicaVM();
-        pessoaf.setCpf(cpf);
+        PessoaFisicaVM pessoaf = new PessoaFisicaVM(cpf);
+
         try {
             stm = con.prepareStatement("SELECT * FROM pessoafisica WHERE cpf = ?");
             stm.setString(1, pessoaf.getCpf());

@@ -53,9 +53,8 @@ public class PessoaJuridicaDAO {
             rs = stm.executeQuery();
             while (rs.next()) {
 
-                PessoaJuridicaVM pessoaj = new PessoaJuridicaVM();
+                PessoaJuridicaVM pessoaj = new PessoaJuridicaVM(rs.getString("cnpj"));
 
-                pessoaj.setCnpj(rs.getString("cnpj"));
                 pessoaj.getInformacoesGerais().setNome(rs.getString("nome"));
                 pessoaj.getInformacoesGerais().setEndereco(rs.getString("cep"), rs.getString("logradouro"),
                                                            rs.getInt("numero"), rs.getString("bairro"),
