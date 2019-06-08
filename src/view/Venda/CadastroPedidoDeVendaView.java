@@ -1,11 +1,10 @@
 
-package view;
+package view.Venda;
 
 import Controller.ClienteController;
+import Controller.VendaController;
 import ViewModel.Cliente.CidadeVM;
-import ViewModel.Cliente.ClienteFactoryVM;
 import ViewModel.Cliente.EstadoVM;
-import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.TipoDePessoa;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
@@ -13,20 +12,18 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import view.MainView;
 
-public class EditarRegistroDeCompraView extends javax.swing.JFrame {
-
-    private ClienteController clienteController;
-    private IClienteVM cliente;
+public class CadastroPedidoDeVendaView extends javax.swing.JFrame {
+    
     private TipoDePessoa tipoDePessoa;
-    private ClienteFactoryVM clienteFactory;
-  
-    public EditarRegistroDeCompraView(ClienteController clienteController,ClienteFactoryVM clienteFactory) {
+    private ClienteController clienteController;
+    private VendaController vendaController;
+    
+    public CadastroPedidoDeVendaView(ClienteController clienteController) {
         initComponents();
         this.clienteController = clienteController;
-        this.clienteFactory = clienteFactory;
         limparCamposDaTela();
         carregarComboBoxUfComListaDeEstados();
         getContentPane().setBackground(Color.white);
@@ -36,15 +33,15 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
         rbnPessoaFisica.setSelected(false);
         rbnPessoaJuridica.setSelected(false);
         txtCPF_CNPJ.setText("");
-        cbxCidade.setSelectedIndex(-1);
+        cbxRestricoes.setSelectedIndex(-1);
         cbxUf.setSelectedIndex(-1);
         txtNome.setText("");
-        txtCep.setText("");
-        txtRestricao.setText("");
+        txtLotacaoMaxima.setText("");
+        txtOpcionais.setText("");
         txtPlaca.setText("");
-        txtBairro.setText("");
+        txtChassi.setText("");
         txtQuilometragem.setText("");
-        txtTelefone.setText("");
+        txtCilindradas.setText("");
         txtValorDeCompra.setText("");
         txtValorDeVenda.setText("");
                 
@@ -68,14 +65,14 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
             EstadoVM estadoSelecionado;
             estadoSelecionado = clienteController.GetEstadoById(cbxUf.getSelectedIndex() - 1);
             for (CidadeVM cidade : estadoSelecionado.getListaDeCidades()) {
-                cbxCidade.addItem(cidade.getNome());
+                cbxRestricoes.addItem(cidade.getNome());
             }
         }
     }
     
     private void limparComboBoxCidadeEAdicionarOpcaoSelecione() {
-        cbxCidade.removeAllItems();
-        cbxCidade.addItem("Selecione");
+        cbxRestricoes.removeAllItems();
+        cbxRestricoes.addItem("Selecione");
     }
     
     private void recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(java.awt.event.ItemEvent evt){
@@ -109,7 +106,7 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
             txtCPF_CNPJ.setFormatterFactory(null);  
             txtCPF_CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mascaraCNPJ));
         } catch (ParseException ex) {
-            Logger.getLogger(EditarRegistroDeCompraView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroPedidoDeVendaView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -120,32 +117,12 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
             txtCPF_CNPJ.setFormatterFactory(null);  
             txtCPF_CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(mascaraCPF));
         } catch (ParseException ex) {
-            Logger.getLogger(EditarRegistroDeCompraView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroPedidoDeVendaView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
-        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), 
-                                                   txtValorDeCompra.getText(), 
-                                                   txtValorDeVenda.getText());
-    }
 
-    private void recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente() {
-        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtRestricao.getText(),
-                                                   Integer.parseInt(txtPlaca.getText()), txtBairro.getText(),
-                                                   cbxCidade.getSelectedItem().toString(),
-                                                   cbxUf.getSelectedItem().toString(),
-                                                   txtQuilometragem.getText());
-    }
-
-    private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
-        
-        cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
-        
-        
-        cliente.getInformacoesGerais().setNome(txtNome.getText());
-        recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
-        recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
+    private void recuperarInformacoesDaTelaEPreencherObjetoVenda() {
+  
     }
  
     @SuppressWarnings("unchecked")
@@ -161,19 +138,18 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
         txtCPF_CNPJ = new javax.swing.JFormattedTextField();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        btnPesquisar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         lblEndereco2 = new javax.swing.JLabel();
-        txtRestricao = new javax.swing.JTextField();
+        txtOpcionais = new javax.swing.JTextField();
         lblNumero2 = new javax.swing.JLabel();
         txtPlaca = new javax.swing.JTextField();
         lblBairro2 = new javax.swing.JLabel();
-        txtBairro = new javax.swing.JTextField();
+        txtChassi = new javax.swing.JTextField();
         lblComplemento2 = new javax.swing.JLabel();
         txtQuilometragem = new javax.swing.JTextField();
         lblUF2 = new javax.swing.JLabel();
         lblCidade2 = new javax.swing.JLabel();
-        cbxCidade = new javax.swing.JComboBox();
+        cbxRestricoes = new javax.swing.JComboBox();
         cbxUf = new javax.swing.JComboBox();
         lblUF3 = new javax.swing.JLabel();
         cbxNumeroDePortas = new javax.swing.JComboBox();
@@ -206,19 +182,25 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtValorDeCompra = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         cbxFichaDeAtendimento = new javax.swing.JComboBox();
         txtValorDeVenda = new javax.swing.JFormattedTextField();
+        btnPesquisar = new javax.swing.JButton();
+        txtValorDeCompra = new javax.swing.JFormattedTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtDataDoPedido = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        cbxVendedor = new javax.swing.JComboBox();
         btnHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Edição Registro de Compra", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(0, 44, 107))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro Pedido de Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(0, 44, 107))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(868, 760));
 
         jPanel2.setBackground(new java.awt.Color(0, 44, 107));
@@ -251,18 +233,6 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
         lblNome.setForeground(new java.awt.Color(0, 44, 107));
         lblNome.setText("Nome / Razão :");
 
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Lupa_20x20.png"))); // NOI18N
-        btnPesquisar.setBorderPainted(false);
-        btnPesquisar.setContentAreaFilled(false);
-        btnPesquisar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.setPreferredSize(new java.awt.Dimension(50, 50));
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -276,12 +246,9 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbnPessoaJuridica))
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,11 +258,9 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
                     .addComponent(rbnPessoaFisica)
                     .addComponent(rbnPessoaJuridica))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCpfCnpj)
-                        .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCpfCnpj)
+                    .addComponent(txtCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,18 +426,23 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
                                             .addGroup(jPanel6Layout.createSequentialGroup()
                                                 .addComponent(lblCidade2)
                                                 .addGap(25, 25, 25)
-                                                .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(cbxRestricoes, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                                 .addGap(79, 79, 79)
-                                                .addComponent(txtRestricao, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txtOpcionais, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lblUF14))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblUF3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblUF6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblUF9, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                            .addComponent(lblUF9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                                .addComponent(lblUF5)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cbxOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblUF6)))))
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbxNumeroDePortas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -490,17 +460,13 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
                             .addComponent(lblUF7))
                         .addGap(23, 23, 23)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtBairro)
+                            .addComponent(txtChassi)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(txtPlaca)
                                 .addGap(32, 32, 32)
                                 .addComponent(lblUF2)
                                 .addGap(31, 31, 31)
                                 .addComponent(cbxUf, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(lblUF5)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lblUF8)
@@ -550,7 +516,7 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBairro2)
-                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtChassi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblComplemento2)
                     .addComponent(txtQuilometragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -583,13 +549,13 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
                     .addComponent(lblUF13)
                     .addComponent(cbxCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUF14)
-                    .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxRestricoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCidade2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblEndereco2)
-                        .addComponent(txtRestricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtOpcionais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cbxCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblUF16))
@@ -600,13 +566,11 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
         );
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Registro de Compra", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 44, 107))); // NOI18N
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Pedido de Venda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 44, 107))); // NOI18N
 
         jLabel4.setText("Ficha de Atendimento:");
 
-        jLabel5.setText("Valor de Compra:");
-
-        txtValorDeCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        jLabel5.setText("Data do Pedido:");
 
         jLabel6.setText("Valor de Venda:");
 
@@ -632,50 +596,99 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
 
         txtValorDeVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Lupa_20x20.png"))); // NOI18N
+        btnPesquisar.setBorderPainted(false);
+        btnPesquisar.setContentAreaFilled(false);
+        btnPesquisar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+
+        txtValorDeCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+
+        jLabel7.setText("Valor de Compra:");
+
+        txtDataDoPedido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
+        jLabel8.setText("Vendedor:");
+
+        cbxVendedor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxVendedorItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxFichaDeAtendimento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtValorDeCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtValorDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(18, 18, 18))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addGap(112, 112, 112)
+                            .addComponent(txtValorDeCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbxFichaDeAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtDataDoPedido))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(62, 62, 62)
+                            .addComponent(cbxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(67, 67, 67)
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtValorDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(213, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cbxFichaDeAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtValorDeCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(cbxFichaDeAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtDataDoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCancelar)
-                        .addComponent(btnSalvar))
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
-                        .addComponent(txtValorDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(txtValorDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbxVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtValorDeCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar)))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -747,11 +760,11 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 975, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
         );
 
         pack();
@@ -763,15 +776,16 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxUfItemStateChanged
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        ClienteView clienteView = new ClienteView();
-        clienteView.setVisible(true);
+        VendaView vendaView = new VendaView();
+        vendaView.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        recuperarInformacoesDaTelaEPreencherObjetoCliente();
+        recuperarInformacoesDaTelaEPreencherObjetoVenda();
         limparCamposDaTela();
-        clienteController.salvarCliente(tipoDePessoa, cliente);
+        vendaController = new VendaController();
+        vendaController.salvarVenda();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -838,6 +852,10 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
         acaoBotaoPesquisar();
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
+    private void cbxVendedorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxVendedorItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxVendedorItemStateChanged
+
   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -853,13 +871,13 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditarRegistroDeCompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPedidoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditarRegistroDeCompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPedidoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditarRegistroDeCompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPedidoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarRegistroDeCompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPedidoDeVendaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -895,7 +913,6 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
     private javax.swing.JComboBox cbxAnoDoModelo;
     private javax.swing.JComboBox cbxCambio;
     private javax.swing.JComboBox cbxCategoria;
-    private javax.swing.JComboBox cbxCidade;
     private javax.swing.JComboBox cbxCombustivel;
     private javax.swing.JComboBox cbxCor;
     private javax.swing.JComboBox cbxFichaDeAtendimento;
@@ -903,11 +920,15 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
     private javax.swing.JComboBox cbxModelo;
     private javax.swing.JComboBox cbxNumeroDePortas;
     private javax.swing.JComboBox cbxOrigem;
+    private javax.swing.JComboBox cbxRestricoes;
     private javax.swing.JComboBox cbxUf;
+    private javax.swing.JComboBox cbxVendedor;
     private javax.swing.JComboBox cbxVersao;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -937,18 +958,23 @@ public class EditarRegistroDeCompraView extends javax.swing.JFrame {
     private javax.swing.JLabel lblUF9;
     private javax.swing.JRadioButton rbnPessoaFisica;
     private javax.swing.JRadioButton rbnPessoaJuridica;
-    private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCPF_CNPJ;
+    private javax.swing.JTextField txtChassi;
     private javax.swing.JTextField txtCilindradas;
+    private javax.swing.JFormattedTextField txtDataDoPedido;
     private javax.swing.JTextField txtLotacaoMaxima;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtOpcionais;
     private javax.swing.JTextField txtPlaca;
     private javax.swing.JTextField txtQuilometragem;
     private javax.swing.JTextField txtRenavan;
-    private javax.swing.JTextField txtRestricao;
     private javax.swing.JFormattedTextField txtValorDeCompra;
     private javax.swing.JFormattedTextField txtValorDeVenda;
     // End of variables declaration//GEN-END:variables
+
+    private void acaoBotaoPesquisar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
    
 }

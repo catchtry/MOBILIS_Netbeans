@@ -1,89 +1,38 @@
 
-package view;
+package view.Veiculo;
 
-import Controller.ClienteController;
-import ViewModel.Cliente.CidadeVM;
-import ViewModel.Cliente.ClienteFactoryVM;
-import ViewModel.Cliente.EstadoVM;
+import Controller.VeiculoController;
 import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.TipoDePessoa;
 import java.awt.Color;
-import java.awt.event.ItemEvent;
 import java.text.ParseException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import view.MainView;
+import view.Veiculo.VeiculoView;
 
 public class CadastroVeiculoView extends javax.swing.JFrame {
 
-    private ClienteController clienteController;
     private IClienteVM cliente;
     private TipoDePessoa tipoDePessoa;
-    private ClienteFactoryVM clienteFactory;
-  
-    public CadastroVeiculoView(ClienteController clienteController,ClienteFactoryVM clienteFactory) {
+    private VeiculoController veiculoController;
+    
+    public CadastroVeiculoView() {
         initComponents();
-        this.clienteController = clienteController;
-        this.clienteFactory = clienteFactory;
         limparCamposDaTela();
-        carregarComboBoxUfComListaDeEstados();
         getContentPane().setBackground(Color.white);
+        veiculoController = new VeiculoController();
     }
     
      private void limparCamposDaTela(){
         rbnPessoaFisica.setSelected(false);
         rbnPessoaJuridica.setSelected(false);
         txtCPF_CNPJ.setText("");
-        cbxCidade.setSelectedIndex(-1);
-        cbxUf.setSelectedIndex(-1);
         txtNome.setText("");
-        txtCep.setText("");
-        txtLogradouro.setText("");
-        txtNumero.setText("");
-        txtBairro.setText("");
-        txtComplemento.setText("");
-        txtTelefone.setText("");
-        txtCelular.setText("");
-        txtEmail.setText("");
-                
+
     }
      
-      private void carregarComboBoxUfComListaDeEstados() {
-        List<EstadoVM> estados;
-        estados = clienteController.GetEstados();
-        cbxUf.addItem("Selecione");
-        for (EstadoVM estado : estados) {
-            cbxUf.addItem(estado.getNome());
-        }
-    }
-    
-     private void carregarComboBoxCidadeComListaDeCidades() {
-        if (cbxUf.getSelectedIndex() == 0) {
-            limparComboBoxCidadeEAdicionarOpcaoSelecione();
-        }
-        if (cbxUf.getSelectedIndex() > 0) {
-            limparComboBoxCidadeEAdicionarOpcaoSelecione();
-            EstadoVM estadoSelecionado;
-            estadoSelecionado = clienteController.GetEstadoById(cbxUf.getSelectedIndex() - 1);
-            for (CidadeVM cidade : estadoSelecionado.getListaDeCidades()) {
-                cbxCidade.addItem(cidade.getNome());
-            }
-        }
-    }
-    
-    private void limparComboBoxCidadeEAdicionarOpcaoSelecione() {
-        cbxCidade.removeAllItems();
-        cbxCidade.addItem("Selecione");
-    }
-    
-    private void recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(java.awt.event.ItemEvent evt){
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            carregarComboBoxCidadeComListaDeCidades();
-        }
-    }
-    
     private void acaoRadioButtonPessoaFisica(){
         rbnPessoaJuridica.setSelected(false);
         setMascaraCPF();
@@ -124,28 +73,9 @@ public class CadastroVeiculoView extends javax.swing.JFrame {
         }
     }
     
-    private void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
-        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), 
-                                                   txtCelular.getText(), 
-                                                   txtEmail.getText());
-    }
+    private void recuperarInformacoesDaTelaEPreencherObjetoVeiculo() {
+        
 
-    private void recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente() {
-        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(),
-                                                   Integer.parseInt(txtNumero.getText()), txtBairro.getText(),
-                                                   cbxCidade.getSelectedItem().toString(),
-                                                   cbxUf.getSelectedItem().toString(),
-                                                   txtComplemento.getText());
-    }
-
-    private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
-        
-        cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
-        
-        
-        cliente.getInformacoesGerais().setNome(txtNome.getText());
-        recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
-        recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
     }
  
     @SuppressWarnings("unchecked")
@@ -645,7 +575,7 @@ public class CadastroVeiculoView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 975, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -669,14 +599,14 @@ public class CadastroVeiculoView extends javax.swing.JFrame {
     }//GEN-LAST:event_rbnPessoaFisicaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        recuperarInformacoesDaTelaEPreencherObjetoCliente();
+        recuperarInformacoesDaTelaEPreencherObjetoVeiculo();
         limparCamposDaTela();
-        clienteController.salvarCliente(tipoDePessoa, cliente);
+        veiculoController.salvarVeiculo();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        ClienteView clienteView = new ClienteView();
-        clienteView.setVisible(true);
+        VeiculoView veiculoView = new VeiculoView();
+        veiculoView.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -685,7 +615,7 @@ public class CadastroVeiculoView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlacaActionPerformed
 
     private void cbxUFItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUFItemStateChanged
-        recarregarComboBoxCidadeComListaDeCidadesDepoisDaReopcao(evt);
+        
     }//GEN-LAST:event_cbxUFItemStateChanged
 
     private void cbxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUFActionPerformed

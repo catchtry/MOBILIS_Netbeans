@@ -1,5 +1,5 @@
 
-package view;
+package view.Cliente;
 
 import Controller.ClienteController;
 import ViewModel.Cliente.CidadeVM;
@@ -13,8 +13,8 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import view.MainView;
 
 public class CadastroClienteView extends javax.swing.JFrame {
 
@@ -188,7 +188,6 @@ public class CadastroClienteView extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(868, 760));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

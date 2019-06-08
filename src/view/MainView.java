@@ -1,6 +1,11 @@
 
 package view;
 
+import view.Venda.VendaView;
+import view.Cliente.ClienteView;
+import view.Compra.CompraView;
+import view.Veiculo.VeiculoView;
+
 public class MainView extends javax.swing.JFrame {
 
  
@@ -50,6 +55,11 @@ public class MainView extends javax.swing.JFrame {
         btnCompra.setMaximumSize(new java.awt.Dimension(147, 41));
         btnCompra.setMinimumSize(new java.awt.Dimension(147, 41));
         btnCompra.setPreferredSize(new java.awt.Dimension(147, 41));
+        btnCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraActionPerformed(evt);
+            }
+        });
 
         btnVenda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnVenda.setForeground(new java.awt.Color(0, 44, 107));
@@ -58,6 +68,11 @@ public class MainView extends javax.swing.JFrame {
         btnVenda.setMaximumSize(new java.awt.Dimension(147, 41));
         btnVenda.setMinimumSize(new java.awt.Dimension(147, 41));
         btnVenda.setPreferredSize(new java.awt.Dimension(147, 41));
+        btnVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendaActionPerformed(evt);
+            }
+        });
 
         btnCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnCliente.setForeground(new java.awt.Color(0, 44, 107));
@@ -79,6 +94,11 @@ public class MainView extends javax.swing.JFrame {
         btnVeiculo.setMaximumSize(new java.awt.Dimension(147, 41));
         btnVeiculo.setMinimumSize(new java.awt.Dimension(147, 41));
         btnVeiculo.setPreferredSize(new java.awt.Dimension(147, 41));
+        btnVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVeiculoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ClienteMenuLayout = new javax.swing.GroupLayout(ClienteMenu);
         ClienteMenu.setLayout(ClienteMenuLayout);
@@ -173,6 +193,24 @@ public class MainView extends javax.swing.JFrame {
         cliente.setVisible(true);  // Torna o JFrame visivel
         this.dispose();  // Fecha o JFrame anterior
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
+        VendaView venda = new VendaView(); // Cria novo objeto do tipo JFrame
+        venda.setVisible(true);  // Torna o JFrame visivel
+        this.dispose();
+    }//GEN-LAST:event_btnVendaActionPerformed
+
+    private void btnVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeiculoActionPerformed
+        VeiculoView veiculo = new VeiculoView(); // Cria novo objeto do tipo JFrame
+        veiculo.setVisible(true);  // Torna o JFrame visivel
+        this.dispose();
+    }//GEN-LAST:event_btnVeiculoActionPerformed
+
+    private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
+        CompraView compra = new CompraView(); // Cria novo objeto do tipo JFrame
+        compra.setVisible(true);  // Torna o JFrame visivel
+        this.dispose();
+    }//GEN-LAST:event_btnCompraActionPerformed
 
   
     public static void main(String args[]) {

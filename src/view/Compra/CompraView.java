@@ -1,16 +1,14 @@
 
-package view;
+package view.Compra;
 
+import view.Cliente.*;
 import Controller.ClienteController;
-import ViewModel.Cliente.ClienteFactoryVM;
+import view.MainView;
 
 
-public class ClienteView extends javax.swing.JFrame {
-
-    ClienteController clienteController = new ClienteController();
-    ClienteFactoryVM clienteFactory = new ClienteFactoryVM();
+public class CompraView extends javax.swing.JFrame {
     
-    public ClienteView() {
+    public CompraView() {
         initComponents();
     }
 
@@ -27,19 +25,18 @@ public class ClienteView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         ClienteMenu = new javax.swing.JPanel();
-        btnApagarCliente = new javax.swing.JButton();
-        btnEditarrCliente = new javax.swing.JButton();
-        btnAdicionarCliente = new javax.swing.JButton();
-        btnPesquisarCliente = new javax.swing.JButton();
+        btnApagarCompra = new javax.swing.JButton();
+        btnEditarCompra = new javax.swing.JButton();
+        btnAdicionarCompra = new javax.swing.JButton();
+        btnPesquisarCompra = new javax.swing.JButton();
         btnHome1 = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(868, 750));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(0, 44, 107))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compra", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(0, 44, 107))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(868, 690));
 
         jPanel2.setBackground(new java.awt.Color(0, 44, 107));
@@ -47,43 +44,48 @@ public class ClienteView extends javax.swing.JFrame {
         ClienteMenu.setBackground(new java.awt.Color(255, 255, 255));
         ClienteMenu.setPreferredSize(new java.awt.Dimension(816, 550));
 
-        btnApagarCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnApagarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
-        btnApagarCliente.setText("Apagar");
-        btnApagarCliente.setMaximumSize(new java.awt.Dimension(147, 41));
-        btnApagarCliente.setMinimumSize(new java.awt.Dimension(147, 41));
-        btnApagarCliente.setPreferredSize(new java.awt.Dimension(147, 41));
+        btnApagarCompra.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnApagarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
+        btnApagarCompra.setText("Apagar");
+        btnApagarCompra.setMaximumSize(new java.awt.Dimension(147, 41));
+        btnApagarCompra.setMinimumSize(new java.awt.Dimension(147, 41));
+        btnApagarCompra.setPreferredSize(new java.awt.Dimension(147, 41));
 
-        btnEditarrCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnEditarrCliente.setForeground(new java.awt.Color(0, 44, 107));
-        btnEditarrCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
-        btnEditarrCliente.setText("Editar");
-        btnEditarrCliente.setMaximumSize(new java.awt.Dimension(147, 41));
-        btnEditarrCliente.setMinimumSize(new java.awt.Dimension(147, 41));
-        btnEditarrCliente.setPreferredSize(new java.awt.Dimension(147, 41));
-        btnEditarrCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarCompra.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnEditarCompra.setForeground(new java.awt.Color(0, 44, 107));
+        btnEditarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pencil.png"))); // NOI18N
+        btnEditarCompra.setText("Editar");
+        btnEditarCompra.setMaximumSize(new java.awt.Dimension(147, 41));
+        btnEditarCompra.setMinimumSize(new java.awt.Dimension(147, 41));
+        btnEditarCompra.setPreferredSize(new java.awt.Dimension(147, 41));
+        btnEditarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarrClienteActionPerformed(evt);
+                btnEditarCompraActionPerformed(evt);
             }
         });
 
-        btnAdicionarCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnAdicionarCliente.setForeground(new java.awt.Color(0, 44, 107));
-        btnAdicionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
-        btnAdicionarCliente.setText("Cadastrar");
-        btnAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionarCompra.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnAdicionarCompra.setForeground(new java.awt.Color(0, 44, 107));
+        btnAdicionarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        btnAdicionarCompra.setText("Cadastrar");
+        btnAdicionarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarClienteActionPerformed(evt);
+                btnAdicionarCompraActionPerformed(evt);
             }
         });
 
-        btnPesquisarCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnPesquisarCliente.setForeground(new java.awt.Color(0, 44, 107));
-        btnPesquisarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
-        btnPesquisarCliente.setText("Pesquisar");
-        btnPesquisarCliente.setMaximumSize(new java.awt.Dimension(147, 41));
-        btnPesquisarCliente.setMinimumSize(new java.awt.Dimension(147, 41));
-        btnPesquisarCliente.setPreferredSize(new java.awt.Dimension(147, 41));
+        btnPesquisarCompra.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnPesquisarCompra.setForeground(new java.awt.Color(0, 44, 107));
+        btnPesquisarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mag-glass.png"))); // NOI18N
+        btnPesquisarCompra.setText("Pesquisar");
+        btnPesquisarCompra.setMaximumSize(new java.awt.Dimension(147, 41));
+        btnPesquisarCompra.setMinimumSize(new java.awt.Dimension(147, 41));
+        btnPesquisarCompra.setPreferredSize(new java.awt.Dimension(147, 41));
+        btnPesquisarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarCompraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ClienteMenuLayout = new javax.swing.GroupLayout(ClienteMenu);
         ClienteMenu.setLayout(ClienteMenuLayout);
@@ -92,12 +94,12 @@ public class ClienteView extends javax.swing.JFrame {
             .addGroup(ClienteMenuLayout.createSequentialGroup()
                 .addGap(160, 160, 160)
                 .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEditarrCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditarCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdicionarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87)
                 .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnApagarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisarCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnApagarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ClienteMenuLayout.setVerticalGroup(
@@ -105,12 +107,12 @@ public class ClienteView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienteMenuLayout.createSequentialGroup()
                 .addContainerGap(129, Short.MAX_VALUE)
                 .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdicionarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(97, 97, 97)
                 .addGroup(ClienteMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditarrCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnApagarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnApagarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(126, 126, 126))
         );
 
@@ -203,19 +205,21 @@ public class ClienteView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    private ClienteController clienteController = new ClienteController();
 
-    private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
+    
+    private void btnAdicionarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCompraActionPerformed
 
-        CadastroClienteView cadastroCliente = new CadastroClienteView(clienteController,clienteFactory); // Cria novo objeto do tipo JFrame
-        cadastroCliente.setVisible(true);  // Torna o JFrame visivel
+        CadastroRegistroDeCompraView cadastroCompra = new CadastroRegistroDeCompraView(clienteController); // Cria novo objeto do tipo JFrame
+        cadastroCompra.setVisible(true);  // Torna o JFrame visivel
         this.dispose();  // Fecha o JFrame anterior
-    }//GEN-LAST:event_btnAdicionarClienteActionPerformed
+    }//GEN-LAST:event_btnAdicionarCompraActionPerformed
 
-    private void btnEditarrClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarrClienteActionPerformed
-        EditarClienteView edicaoCadastroCliente = new EditarClienteView(clienteController,clienteFactory); // Cria novo objeto do tipo JFrame
-        edicaoCadastroCliente.setVisible(true);  // Torna o JFrame visivel
+    private void btnEditarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCompraActionPerformed
+        EditarRegistroDeCompraView edicaoRegistroDeCompraView = new EditarRegistroDeCompraView(clienteController); // Cria novo objeto do tipo JFrame
+        edicaoRegistroDeCompraView.setVisible(true);  // Torna o JFrame visivel
         this.dispose();
-    }//GEN-LAST:event_btnEditarrClienteActionPerformed
+    }//GEN-LAST:event_btnEditarCompraActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         
@@ -224,6 +228,12 @@ public class ClienteView extends javax.swing.JFrame {
     private void btnHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHome1ActionPerformed
         acaoBotaoHome();
     }//GEN-LAST:event_btnHome1ActionPerformed
+
+    private void btnPesquisarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCompraActionPerformed
+        PesquisaAvancada pesquisaAvancada = new PesquisaAvancada(); // Cria novo objeto do tipo JFrame
+        pesquisaAvancada.setVisible(true);  // Torna o JFrame visivel
+        this.dispose();
+    }//GEN-LAST:event_btnPesquisarCompraActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -239,14 +249,18 @@ public class ClienteView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompraView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -255,19 +269,19 @@ public class ClienteView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteView().setVisible(true);
+                new CompraView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ClienteMenu;
-    private javax.swing.JButton btnAdicionarCliente;
-    private javax.swing.JButton btnApagarCliente;
-    private javax.swing.JButton btnEditarrCliente;
+    private javax.swing.JButton btnAdicionarCompra;
+    private javax.swing.JButton btnApagarCompra;
+    private javax.swing.JButton btnEditarCompra;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnHome1;
-    private javax.swing.JButton btnPesquisarCliente;
+    private javax.swing.JButton btnPesquisarCompra;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

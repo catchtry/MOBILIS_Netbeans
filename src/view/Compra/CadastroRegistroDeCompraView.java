@@ -1,11 +1,11 @@
 
-package view;
+package view.Compra;
 
+import view.Cliente.ClienteView;
 import Controller.ClienteController;
+import Controller.CompraController;
 import ViewModel.Cliente.CidadeVM;
-import ViewModel.Cliente.ClienteFactoryVM;
 import ViewModel.Cliente.EstadoVM;
-import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.TipoDePessoa;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
@@ -13,20 +13,18 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import view.MainView;
 
 public class CadastroRegistroDeCompraView extends javax.swing.JFrame {
 
     private ClienteController clienteController;
-    private IClienteVM cliente;
     private TipoDePessoa tipoDePessoa;
-    private ClienteFactoryVM clienteFactory;
+    private CompraController compraController;
   
-    public CadastroRegistroDeCompraView(ClienteController clienteController,ClienteFactoryVM clienteFactory) {
+    public CadastroRegistroDeCompraView(ClienteController clienteController) {
         initComponents();
         this.clienteController = clienteController;
-        this.clienteFactory = clienteFactory;
         limparCamposDaTela();
         carregarComboBoxUfComListaDeEstados();
         getContentPane().setBackground(Color.white);
@@ -39,12 +37,10 @@ public class CadastroRegistroDeCompraView extends javax.swing.JFrame {
         cbxCidade.setSelectedIndex(-1);
         cbxUf.setSelectedIndex(-1);
         txtNome.setText("");
-        txtCep.setText("");
         txtRestricao.setText("");
         txtPlaca.setText("");
         txtBairro.setText("");
         txtQuilometragem.setText("");
-        txtTelefone.setText("");
         txtValorDeCompra.setText("");
         txtValorDeVenda.setText("");
                 
@@ -123,29 +119,9 @@ public class CadastroRegistroDeCompraView extends javax.swing.JFrame {
             Logger.getLogger(CadastroRegistroDeCompraView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
-        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), 
-                                                   txtValorDeCompra.getText(), 
-                                                   txtValorDeVenda.getText());
-    }
 
-    private void recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente() {
-        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtRestricao.getText(),
-                                                   Integer.parseInt(txtPlaca.getText()), txtBairro.getText(),
-                                                   cbxCidade.getSelectedItem().toString(),
-                                                   cbxUf.getSelectedItem().toString(),
-                                                   txtQuilometragem.getText());
-    }
+    private void recuperarInformacoesDaTelaEPreencherObjetoCompra() {
 
-    private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
-        
-        cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
-        
-        
-        cliente.getInformacoesGerais().setNome(txtNome.getText());
-        recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
-        recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
     }
  
     @SuppressWarnings("unchecked")
@@ -480,7 +456,6 @@ public class CadastroRegistroDeCompraView extends javax.swing.JFrame {
                                 .addGap(31, 31, 31)
                                 .addComponent(cbxUf, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblUF5)
                                 .addGap(18, 18, 18)
                                 .addComponent(cbxOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -574,11 +549,11 @@ public class CadastroRegistroDeCompraView extends javax.swing.JFrame {
                         .addComponent(lblEndereco2)
                         .addComponent(txtRestricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbxCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblUF16))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cbxCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblUF15)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUF16))))
+                        .addComponent(lblUF15)))
                 .addContainerGap())
         );
 
@@ -752,9 +727,9 @@ public class CadastroRegistroDeCompraView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        recuperarInformacoesDaTelaEPreencherObjetoCliente();
+        recuperarInformacoesDaTelaEPreencherObjetoCompra();
         limparCamposDaTela();
-        clienteController.salvarCliente(tipoDePessoa, cliente);
+        compraController.salvarCompra();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed

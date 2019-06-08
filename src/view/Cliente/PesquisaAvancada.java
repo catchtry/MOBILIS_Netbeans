@@ -1,9 +1,8 @@
 
-package view;
+package view.Cliente;
 
 import Controller.ClienteController;
 import ViewModel.Cliente.CidadeVM;
-import ViewModel.Cliente.ClienteFactoryVM;
 import ViewModel.Cliente.EstadoVM;
 import ViewModel.Cliente.IClienteVM;
 import ViewModel.Cliente.TipoDePessoa;
@@ -13,20 +12,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.MaskFormatter;
+import view.MainView;
 
 public class PesquisaAvancada extends javax.swing.JFrame {
     
-    private ClienteController clienteController;
     private IClienteVM cliente;
     private TipoDePessoa tipoDePessoa;
-    private ClienteFactoryVM clienteFactory;
+    private ClienteController clienteController;
  
-    public PesquisaAvancada(ClienteController clienteController,ClienteFactoryVM clienteFactory) {
+    public PesquisaAvancada() {
         initComponents();
-        this.clienteController = clienteController;
         limparCamposDaTela();
         carregarComboBoxUfComListaDeEstados();
-        this.clienteFactory = clienteFactory;
     }
 
     private void carregarComboBoxUfComListaDeEstados() {
@@ -62,17 +59,7 @@ public class PesquisaAvancada extends javax.swing.JFrame {
         cbxUf.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getUf());
         
         txtNome.setText(cliente.getInformacoesGerais().getNome());
-        /*
-        txtCep.setText(cliente.getInformacoesGerais().getEndereco().getCep());
-        txtLogradouro.setText(cliente.getInformacoesGerais().getEndereco().getLogradouro());
-        txtNumero.setText(Integer.toString(cliente.getInformacoesGerais().getEndereco().getNumero()));
-        txtBairro.setText(cliente.getInformacoesGerais().getEndereco().getBairro());
-        txtComplemento.setText(cliente.getInformacoesGerais().getEndereco().getComplemento());
-        txtTelefone.setText(cliente.getInformacoesGerais().getContato().getTelefone());
-        txtCelular.setText(cliente.getInformacoesGerais().getContato().getCelular());
-        txtEmail.setText(cliente.getInformacoesGerais().getContato().getEmail());  
-        cbxCidade.setSelectedItem(cliente.getInformacoesGerais().getEndereco().getCidade());
-        */
+
     }
     
     private void limparCamposDaTela(){
@@ -82,16 +69,6 @@ public class PesquisaAvancada extends javax.swing.JFrame {
         cbxCidade.setSelectedIndex(-1);
         cbxUf.setSelectedIndex(-1);
         txtNome.setText("");
-        /*
-        txtCep.setText("");
-        txtLogradouro.setText("");
-        txtNumero.setText("");
-        txtBairro.setText("");
-        txtComplemento.setText("");
-        txtTelefone.setText("");
-        txtCelular.setText("");
-        txtEmail.setText("");
-        */
                 
     }
     
@@ -147,29 +124,9 @@ public class PesquisaAvancada extends javax.swing.JFrame {
     }
     
     private void recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente() {
-        /*
-        cliente.getInformacoesGerais().setContato(txtTelefone.getText(), 
-                                                   txtCelular.getText(), 
-                                                   txtEmail.getText());
-        */
+      
     }
-/*
-    private void recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente() {
-        cliente.getInformacoesGerais().setEndereco(txtCep.getText(), txtLogradouro.getText(),
-                                                   Integer.parseInt(txtNumero.getText()), txtBairro.getText(),
-                                                   cbxCidade.getSelectedItem().toString(),
-                                                   cbxUf.getSelectedItem().toString(),
-                                                   txtComplemento.getText());
-    }
-*/
-/*    
-    private void recuperarInformacoesDaTelaEPreencherObjetoCliente() {
-        cliente = clienteFactory.instanciarClienteConformeOTipoDePessoa(tipoDePessoa,txtCPF_CNPJ.getText());
-        cliente.getInformacoesGerais().setNome(txtNome.getText());
-        recuperarInformacoesDaTelaEAtribuirAoEnderecoDoCliente();
-        recuperarInformacoesDaTelaEAtribuirAoContatoDoCliente();
-    }
- */
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -421,7 +378,7 @@ public class PesquisaAvancada extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -439,8 +396,6 @@ public class PesquisaAvancada extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Pesquisa Avançada");
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -452,13 +407,11 @@ public class PesquisaAvancada extends javax.swing.JFrame {
     private void rbnPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPessoaJuridicaActionPerformed
         acaoRadioButtonPessoaJuridica();
     }//GEN-LAST:event_rbnPessoaJuridicaActionPerformed
-/*
+
     private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
-        recuperarInformacoesDaTelaEPreencherObjetoCliente();
-        limparCamposDaTela();
-        clienteController.atualizarCliente(tipoDePessoa, cliente);
+       
     }//GEN-LAST:event_btnPesquisaActionPerformed
-*/
+
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
        acaoBotaoHome();
     }//GEN-LAST:event_btnHomeActionPerformed
